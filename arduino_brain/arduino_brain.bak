@@ -449,8 +449,6 @@ Wire Wire Line
 	8700 2600 9000 2600
 Text Notes 4700 900  0    50   ~ 0
 order PNP transistors, 7 V relay, 10x diodes N4001 or SB560 
-Text GLabel 1650 1500 0    50   Output Italic 0
-battery+
 Text Notes 7600 5850 0    50   ~ 0
 6 lights/things to control
 Text GLabel 2300 1750 2    50   Input ~ 10
@@ -1009,10 +1007,10 @@ Text Notes 4200 5200 0    50   ~ 0
 Text Notes 4100 5250 0    50   ~ 0
 ~ 
 $Comp
-L MCU_Module:Arduino_UNO_R3 A?
+L MCU_Module:Arduino_UNO_R3 A1
 U 1 1 5E167047
 P 4350 5500
-F 0 "A?" H 4350 6681 50  0000 C CNN
+F 0 "A1" H 4350 6681 50  0000 C CNN
 F 1 "Arduino_UNO_R3" H 4350 6590 50  0000 C CNN
 F 2 "Module:Arduino_UNO_R3" H 4500 4450 50  0001 L CNN
 F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 4150 6550 50  0001 C CNN
@@ -1059,31 +1057,13 @@ Wire Wire Line
 	2000 4700 2000 5700
 Connection ~ 2650 5700
 Wire Wire Line
-	6300 5050 5250 5050
-Wire Wire Line
-	5250 5050 5250 6900
-Wire Wire Line
-	5250 6900 3550 6900
-Wire Wire Line
 	3550 6900 3550 6000
 Wire Wire Line
 	3550 6000 3850 6000
 Wire Wire Line
-	6900 4600 5150 4600
-Wire Wire Line
-	5150 4600 5150 6800
-Wire Wire Line
-	5150 6800 3650 6800
-Wire Wire Line
 	3650 6800 3650 5900
 Wire Wire Line
 	3650 5900 3850 5900
-Wire Wire Line
-	6100 4100 5050 4100
-Wire Wire Line
-	5050 4100 5050 6700
-Wire Wire Line
-	5050 6700 3450 6700
 Wire Wire Line
 	3450 6700 3450 5800
 Wire Wire Line
@@ -1110,90 +1090,139 @@ Wire Wire Line
 	3550 1850 3550 5200
 Wire Wire Line
 	3550 5200 3850 5200
-$Comp
-L Device:R R?
-U 1 1 5E0F06FF
-P 2400 1200
-F 0 "R?" V 2607 1200 50  0000 C CNN
-F 1 "22k" V 2516 1200 50  0000 C CNN
-F 2 "" V 2330 1200 50  0001 C CNN
-F 3 "~" H 2400 1200 50  0001 C CNN
-	1    2400 1200
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2250 1200 1850 1200
-Wire Wire Line
-	1850 1200 1850 1500
-Wire Wire Line
-	1850 1500 1650 1500
-Wire Wire Line
-	4850 5500 4900 5500
-Wire Wire Line
-	4900 5500 4900 5450
-Wire Wire Line
-	4900 3200 3700 3200
-Wire Wire Line
-	3700 3200 3700 1200
-Wire Wire Line
-	3700 1200 2550 1200
-$Comp
-L Device:R R?
-U 1 1 5E10520B
-P 4950 5300
-F 0 "R?" V 5157 5300 50  0000 C CNN
-F 1 "10k" V 5066 5300 50  0000 C CNN
-F 2 "" V 4880 5300 50  0001 C CNN
-F 3 "~" H 4950 5300 50  0001 C CNN
-	1    4950 5300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4950 5150 4900 5150
-Wire Wire Line
-	4900 5150 4900 4850
-Wire Wire Line
-	4950 5450 4900 5450
-$Comp
-L Device:R R?
-U 1 1 5E11941E
-P 5750 5350
-F 0 "R?" V 5957 5350 50  0000 C CNN
-F 1 "2k" V 5866 5350 50  0000 C CNN
-F 2 "" V 5680 5350 50  0001 C CNN
-F 3 "~" H 5750 5350 50  0001 C CNN
-	1    5750 5350
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5600 5350 5550 5350
-Wire Wire Line
-	5550 5350 5550 4850
-Wire Wire Line
-	5550 4850 4900 4850
-Connection ~ 4900 4850
-Wire Wire Line
-	4900 4850 4900 3200
-Wire Wire Line
-	5900 5350 6850 5350
 Wire Wire Line
 	6850 5350 6850 5250
 Connection ~ 6850 5250
 $Comp
-L Device:C C?
-U 1 1 5E12E82D
-P 5750 5700
-F 0 "C?" V 6002 5700 50  0000 C CNN
-F 1 "0.1 uF, 100V, ceramic" V 5911 5700 50  0000 C CNN
-F 2 "" H 5788 5550 50  0001 C CNN
-F 3 "~" H 5750 5700 50  0001 C CNN
-	1    5750 5700
+L Regulator_Switching:R-78B5.0-2.0 U1
+U 1 1 5E105FCA
+P 1100 7150
+F 0 "U1" H 1100 7392 50  0000 C CNN
+F 1 "R-78B5.0-1.5" H 1100 7301 50  0000 C CNN
+F 2 "Converter_DCDC:Converter_DCDC_RECOM_R-78B-2.0_THT" H 1150 6900 50  0001 L CIN
+F 3 "https://www.recom-power.com/pdf/Innoline/R-78Bxx-2.0.pdf" H 1100 7150 50  0001 C CNN
+	1    1100 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5E107402
+P 1500 7150
+F 0 "#PWR?" H 1500 7000 50  0001 C CNN
+F 1 "+5V" H 1515 7323 50  0000 C CNN
+F 2 "" H 1500 7150 50  0001 C CNN
+F 3 "" H 1500 7150 50  0001 C CNN
+	1    1500 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5E107F0F
+P 650 7150
+F 0 "#PWR?" H 650 7000 50  0001 C CNN
+F 1 "+12V" H 665 7323 50  0000 C CNN
+F 2 "" H 650 7150 50  0001 C CNN
+F 3 "" H 650 7150 50  0001 C CNN
+	1    650  7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5E108737
+P 1100 7450
+F 0 "#PWR?" H 1100 7200 50  0001 C CNN
+F 1 "GND" H 1105 7277 50  0000 C CNN
+F 2 "" H 1100 7450 50  0001 C CNN
+F 3 "" H 1100 7450 50  0001 C CNN
+	1    1100 7450
+	1    0    0    -1  
+$EndComp
+Connection ~ 5350 5500
+$Comp
+L Device:R R3
+U 1 1 5E11941E
+P 5500 5500
+F 0 "R3" V 5707 5500 50  0000 C CNN
+F 1 "2k" V 5616 5500 50  0000 C CNN
+F 2 "" V 5430 5500 50  0001 C CNN
+F 3 "~" H 5500 5500 50  0001 C CNN
+	1    5500 5500
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	5600 5700 5600 5350
-Connection ~ 5600 5350
+	5650 5850 5650 5500
 Wire Wire Line
-	5900 5700 5900 5350
-Connection ~ 5900 5350
+	5350 5850 5350 5500
+$Comp
+L Device:C C1
+U 1 1 5E12E82D
+P 5500 5850
+F 0 "C1" V 5752 5850 50  0000 C CNN
+F 1 "0.1 uF, 100V, ceramic" V 5661 5850 50  0000 C CNN
+F 2 "" H 5538 5700 50  0001 C CNN
+F 3 "~" H 5500 5850 50  0001 C CNN
+	1    5500 5850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6200 6800 3650 6800
+Wire Wire Line
+	6900 4600 6200 4600
+Wire Wire Line
+	6200 4600 6200 6800
+Wire Wire Line
+	6100 6700 3450 6700
+Wire Wire Line
+	6100 4100 6100 6700
+Wire Wire Line
+	6250 6900 3550 6900
+Wire Wire Line
+	6300 5050 6250 5050
+Wire Wire Line
+	6250 5050 6250 6900
+$Comp
+L Device:R R1
+U 1 1 5E10520B
+P 5000 5500
+F 0 "R1" V 5207 5500 50  0000 C CNN
+F 1 "10k" V 5116 5500 50  0000 C CNN
+F 2 "" V 4930 5500 50  0001 C CNN
+F 3 "~" H 5000 5500 50  0001 C CNN
+	1    5000 5500
+	0    -1   -1   0   
+$EndComp
+Text GLabel 5150 5200 1    50   Output Italic 0
+battery+
+Connection ~ 5150 5500
+Wire Wire Line
+	5150 5500 5350 5500
+$Comp
+L Device:R R2
+U 1 1 5E0F06FF
+P 5150 5350
+F 0 "R2" V 5357 5350 50  0000 C CNN
+F 1 "22k" V 5266 5350 50  0000 C CNN
+F 2 "" V 5080 5350 50  0001 C CNN
+F 3 "~" H 5150 5350 50  0001 C CNN
+	1    5150 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 7150 1500 7150
+Wire Wire Line
+	800  7150 650  7150
+$Comp
+L power:GND #PWR?
+U 1 1 5E27DA33
+P 5750 5850
+F 0 "#PWR?" H 5750 5600 50  0001 C CNN
+F 1 "GND" H 5755 5677 50  0000 C CNN
+F 2 "" H 5750 5850 50  0001 C CNN
+F 3 "" H 5750 5850 50  0001 C CNN
+	1    5750 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 5850 5750 5850
+Connection ~ 5650 5850
 $EndSCHEMATC

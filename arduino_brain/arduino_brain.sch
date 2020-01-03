@@ -214,15 +214,15 @@ Wire Notes Line
 	1700 3700 1700 4050
 Text Notes 1150 3700 0    50   ~ 0
 Speed magnet
-Text GLabel 1650 4250 0    50   Output ~ 10
+Text GLabel 1650 5100 0    50   Output ~ 10
 COMMODO_LEFT
-Text GLabel 1650 4400 0    50   Output ~ 10
+Text GLabel 1650 5250 0    50   Output ~ 10
 COMMODO_RIGHT
-Text GLabel 1650 4550 0    50   Output ~ 10
+Text GLabel 1650 5400 0    50   Output ~ 10
 COMMODO_HORN
-Text GLabel 1650 4700 0    50   Output ~ 10
+Text GLabel 1650 5550 0    50   Output ~ 10
 COMMODO_ECO
-Text GLabel 1650 4850 0    50   Output ~ 0
+Text GLabel 1650 5700 0    50   Output ~ 0
 COMMODO_GND
 Text Notes -1100 5050 0    50   ~ 0
 9 free I/O\n15 I/O to have
@@ -364,14 +364,14 @@ F 3 "" H 8000 1650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
-	1750 4950 900  4950
+	1750 5800 900  5800
 Wire Notes Line
-	900  4950 900  4150
+	900  5800 900  5000
 Wire Notes Line
-	900  4150 1750 4150
+	900  5000 1750 5000
 Wire Notes Line
-	1750 4150 1750 4950
-Text Notes 900  4150 0    50   ~ 0
+	1750 5000 1750 5800
+Text Notes 900  5000 0    50   ~ 0
 Comodo
 $Comp
 L power:GND #PWR?
@@ -935,10 +935,6 @@ Wire Wire Line
 	4250 4250 4250 4500
 Wire Wire Line
 	3350 5100 3850 5100
-Wire Wire Line
-	2150 5100 2150 4250
-Wire Wire Line
-	2150 4250 1650 4250
 $Comp
 L Device:R R?
 U 1 1 5E17B774
@@ -950,8 +946,6 @@ F 3 "~" H 3050 5150 50  0001 C CNN
 	1    3050 5150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2100 4400 1650 4400
 Wire Wire Line
 	3050 5000 3050 4850
 Wire Wire Line
@@ -971,7 +965,7 @@ F 3 "~" H 2850 5450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2050 4550 1650 4550
+	2050 5400 1650 5400
 Wire Wire Line
 	2850 5300 2850 4950
 Wire Wire Line
@@ -991,7 +985,7 @@ F 3 "~" H 2650 5550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2000 4700 1650 4700
+	2000 5550 1650 5550
 Wire Wire Line
 	2650 5400 2650 4950
 Wire Wire Line
@@ -1030,31 +1024,21 @@ PWM
 Text Notes 4150 6050 0    50   ~ 0
 PWM
 Wire Wire Line
-	2150 5100 3350 5100
-Wire Wire Line
 	3050 5300 3850 5300
 Wire Wire Line
 	3050 5300 2950 5300
 Wire Wire Line
 	2950 5300 2950 5250
-Wire Wire Line
-	2950 5250 2100 5250
-Wire Wire Line
-	2100 4400 2100 5250
 Connection ~ 3050 5300
 Wire Wire Line
 	3850 5600 2850 5600
 Wire Wire Line
 	2850 5600 2050 5600
-Wire Wire Line
-	2050 4550 2050 5600
 Connection ~ 2850 5600
 Wire Wire Line
 	3850 5700 2650 5700
 Wire Wire Line
 	2650 5700 2000 5700
-Wire Wire Line
-	2000 4700 2000 5700
 Connection ~ 2650 5700
 Wire Wire Line
 	3550 6900 3550 6000
@@ -1225,4 +1209,33 @@ $EndComp
 Wire Wire Line
 	5650 5850 5750 5850
 Connection ~ 5650 5850
+Wire Wire Line
+	2000 5550 2000 5700
+Wire Wire Line
+	2050 5400 2050 5600
+Wire Wire Line
+	1650 5250 2950 5250
+Wire Wire Line
+	1650 5100 3350 5100
+$Comp
+L Device:D D1
+U 1 1 5E291EAE
+P 1100 6700
+F 0 "D1" H 1100 6916 50  0000 C CNN
+F 1 "D" H 1100 6825 50  0000 C CNN
+F 2 "" H 1100 6700 50  0001 C CNN
+F 3 "~" H 1100 6700 50  0001 C CNN
+	1    1100 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 6700 1400 6700
+Wire Wire Line
+	1400 6700 1400 7150
+Connection ~ 1400 7150
+Wire Wire Line
+	950  6700 800  6700
+Wire Wire Line
+	800  6700 800  7150
+Connection ~ 800  7150
 $EndSCHEMATC
