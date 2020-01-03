@@ -15,10 +15,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Module:Arduino_UNO_R3 A?
+L MCU_Module:Arduino_UNO_R3 A2
 U 1 1 5DFDE4CB
 P -1750 6050
-F 0 "A?" H -1750 7231 50  0000 C CNN
+F 0 "A2" H -1750 7231 50  0000 C CNN
 F 1 "Arduino_UNO_R3" H -1750 7140 50  0000 C CNN
 F 2 "Module:Arduino_UNO_R3" H -1600 5000 50  0001 L CNN
 F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H -1950 7100 50  0001 C CNN
@@ -224,8 +224,6 @@ Text GLabel 1650 5550 0    50   Output ~ 10
 COMMODO_ECO
 Text GLabel 1650 5700 0    50   Output ~ 0
 COMMODO_GND
-Text Notes -1100 5050 0    50   ~ 0
-9 free I/O\n15 I/O to have
 Text GLabel -2150 8050 2    50   Input ~ 0
 BLUEFRUIT_MOSI
 Text GLabel -2150 7600 2    50   Input ~ 0
@@ -367,10 +365,10 @@ $EndComp
 Wire Wire Line
 	9000 5000 8550 5000
 $Comp
-L Device:Q_NPN_Darlington_BCE Q?
+L Device:Q_NPN_Darlington_BCE Q10
 U 1 1 5E0ABF98
 P 6850 4100
-F 0 "Q?" H 7040 4146 50  0000 L CNN
+F 0 "Q10" H 7040 4146 50  0000 L CNN
 F 1 "Q_NPN_Darlington_BCE" H 7040 4055 50  0000 L CNN
 F 2 "" H 7050 4200 50  0001 C CNN
 F 3 "~" H 6850 4100 50  0001 C CNN
@@ -378,10 +376,10 @@ F 3 "~" H 6850 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R?
+L Device:R R20
 U 1 1 5E0AE97B
 P 6250 4100
-F 0 "R?" V 6457 4100 50  0000 C CNN
+F 0 "R20" V 6457 4100 50  0000 C CNN
 F 1 "2.2k" V 6366 4100 50  0000 C CNN
 F 2 "" V 6180 4100 50  0001 C CNN
 F 3 "~" H 6250 4100 50  0001 C CNN
@@ -437,10 +435,10 @@ Check if lamp chassis ground is isolated. If not, we need an isolated ground (no
 Text Notes 9650 4900 0    50   ~ 0
 Check if lamp chassis ground is isolated. If not, we need an isolated ground (not connecting battery ground with chassis ground!!!)
 $Comp
-L Device:Q_PNP_BCE Q?
+L Device:Q_PNP_BCE Q11
 U 1 1 5E0EA248
 P 7550 3900
-F 0 "Q?" H 7740 3854 50  0000 L CNN
+F 0 "Q11" H 7740 3854 50  0000 L CNN
 F 1 "Q_PNP_BCE" H 7740 3945 50  0000 L CNN
 F 2 "" H 7750 4000 50  0001 C CNN
 F 3 "~" H 7550 3900 50  0001 C CNN
@@ -448,10 +446,10 @@ F 3 "~" H 7550 3900 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L Device:R R?
+L Device:R R21
 U 1 1 5E0EAF2D
 P 7200 3900
-F 0 "R?" V 7407 3900 50  0000 C CNN
+F 0 "R21" V 7407 3900 50  0000 C CNN
 F 1 "2.2k" V 7316 3900 50  0000 C CNN
 F 2 "" V 7130 3900 50  0001 C CNN
 F 3 "~" H 7200 3900 50  0001 C CNN
@@ -466,10 +464,10 @@ Wire Wire Line
 Wire Wire Line
 	7050 3900 6950 3900
 $Comp
-L Device:R R?
+L Device:R R22
 U 1 1 5E0FEFBE
 P 7200 3550
-F 0 "R?" V 7407 3550 50  0000 C CNN
+F 0 "R22" V 7407 3550 50  0000 C CNN
 F 1 "22k" V 7316 3550 50  0000 C CNN
 F 2 "" V 7130 3550 50  0001 C CNN
 F 3 "~" H 7200 3550 50  0001 C CNN
@@ -492,10 +490,10 @@ Connection ~ 7050 3900
 Wire Wire Line
 	7650 4100 9000 4100
 $Comp
-L Device:Q_NPN_Darlington_BCE Q?
+L Device:Q_NPN_Darlington_BCE Q8
 U 1 1 5E10C4F3
 P 6750 3150
-F 0 "Q?" H 6940 3196 50  0000 L CNN
+F 0 "Q8" H 6940 3196 50  0000 L CNN
 F 1 "Q_NPN_Darlington_BCE" H 6940 3105 50  0000 L CNN
 F 2 "" H 6950 3250 50  0001 C CNN
 F 3 "~" H 6750 3150 50  0001 C CNN
@@ -503,10 +501,10 @@ F 3 "~" H 6750 3150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R?
+L Device:R R17
 U 1 1 5E10C4FD
 P 6300 3150
-F 0 "R?" V 6507 3150 50  0000 C CNN
+F 0 "R17" V 6507 3150 50  0000 C CNN
 F 1 "2.2k" V 6416 3150 50  0000 C CNN
 F 2 "" V 6230 3150 50  0001 C CNN
 F 3 "~" H 6300 3150 50  0001 C CNN
@@ -516,10 +514,10 @@ $EndComp
 Wire Wire Line
 	6450 3150 6550 3150
 $Comp
-L Device:Q_PNP_BCE Q?
+L Device:Q_PNP_BCE Q9
 U 1 1 5E10C508
 P 7450 2950
-F 0 "Q?" H 7640 2904 50  0000 L CNN
+F 0 "Q9" H 7640 2904 50  0000 L CNN
 F 1 "Q_PNP_BCE" H 7640 2995 50  0000 L CNN
 F 2 "" H 7650 3050 50  0001 C CNN
 F 3 "~" H 7450 2950 50  0001 C CNN
@@ -527,10 +525,10 @@ F 3 "~" H 7450 2950 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L Device:R R?
+L Device:R R18
 U 1 1 5E10C512
 P 7100 2950
-F 0 "R?" V 7307 2950 50  0000 C CNN
+F 0 "R18" V 7307 2950 50  0000 C CNN
 F 1 "2.2k" V 7216 2950 50  0000 C CNN
 F 2 "" V 7030 2950 50  0001 C CNN
 F 3 "~" H 7100 2950 50  0001 C CNN
@@ -540,10 +538,10 @@ $EndComp
 Wire Wire Line
 	6950 2950 6850 2950
 $Comp
-L Device:R R?
+L Device:R R19
 U 1 1 5E10C51D
 P 7100 2600
-F 0 "R?" V 7307 2600 50  0000 C CNN
+F 0 "R19" V 7307 2600 50  0000 C CNN
 F 1 "22k" V 7216 2600 50  0000 C CNN
 F 2 "" V 7030 2600 50  0001 C CNN
 F 3 "~" H 7100 2600 50  0001 C CNN
@@ -1060,11 +1058,11 @@ Wire Notes Line
 Wire Notes Line
 	1800 6700 2650 6700
 Text Notes 1900 6350 0    50   ~ 0
-white
+white (3)
 Text Notes 1900 6550 0    50   ~ 0
-black
+black (2)
 Text Notes 1800 6250 0    50   ~ 0
-JST-3 male white
+JST-3-F white
 Wire Notes Line
 	1800 6250 1800 6700
 $Comp
@@ -1209,10 +1207,10 @@ Wire Wire Line
 	8850 2600 8850 3350
 Connection ~ 8850 3900
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0113
 U 1 1 5E50ECA0
 P 8850 3900
-F 0 "#PWR?" H 8850 3650 50  0001 C CNN
+F 0 "#PWR0113" H 8850 3650 50  0001 C CNN
 F 1 "GND" H 8855 3727 50  0000 C CNN
 F 2 "" H 8850 3900 50  0001 C CNN
 F 3 "" H 8850 3900 50  0001 C CNN
@@ -1238,10 +1236,10 @@ Connection ~ 7550 2600
 Wire Wire Line
 	7550 2600 8550 2600
 $Comp
-L power:+12V #PWR?
+L power:+12V #PWR0114
 U 1 1 5E635F99
 P 8800 1300
-F 0 "#PWR?" H 8800 1150 50  0001 C CNN
+F 0 "#PWR0114" H 8800 1150 50  0001 C CNN
 F 1 "+12V" H 8815 1473 50  0000 C CNN
 F 2 "" H 8800 1300 50  0001 C CNN
 F 3 "" H 8800 1300 50  0001 C CNN
@@ -1250,10 +1248,10 @@ F 3 "" H 8800 1300 50  0001 C CNN
 $EndComp
 Connection ~ 8800 1300
 $Comp
-L power:+12V #PWR?
+L power:+12V #PWR0115
 U 1 1 5E6365E0
 P 5450 2300
-F 0 "#PWR?" H 5450 2150 50  0001 C CNN
+F 0 "#PWR0115" H 5450 2150 50  0001 C CNN
 F 1 "+12V" H 5465 2473 50  0000 C CNN
 F 2 "" H 5450 2300 50  0001 C CNN
 F 3 "" H 5450 2300 50  0001 C CNN
@@ -1263,4 +1261,22 @@ $EndComp
 Connection ~ 5450 2300
 Wire Wire Line
 	5450 2850 8300 2850
+Text Notes 700  750  0    50   ~ 0
+TODO: \n- wire the speed sensor\n- wire the start/stop
+Text Notes 2300 2600 0    50   ~ 0
+Black (2)
+Text Notes 2300 2800 0    50   ~ 0
+Red (1)
+Text Notes 2300 3000 0    50   ~ 0
+Green (3)
+Wire Notes Line
+	3050 3150 2200 3150
+Wire Notes Line
+	2200 3150 2200 2500
+Wire Notes Line
+	2200 2500 3050 2500
+Wire Notes Line
+	3050 2500 3050 3150
+Text Notes 2200 2500 0    50   ~ 0
+JST-3-F black
 $EndSCHEMATC
