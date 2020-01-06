@@ -5,6 +5,10 @@
  * Controls the Arduino Uno R3 Board that is hooked up to OLED screen, horn, lamps and other on-board controls
  */
 
+#include "EdgeDebounceLite.h" // j-bellavance debounce function under GNU license
+
+
+EdgeDebounceLite debounce ;
 
 // input assignments
 int input_horn = 7 ; // pulls low when button is pressed
@@ -59,5 +63,5 @@ void off_horn(){
 }
 
 uint8_t read_button_horn(){
-  return digitalRead(input_horn); // or PUSH_BUTTON_HORN
+  return debounce.pin(input_horn); // or PUSH_BUTTON_HORN
 }
