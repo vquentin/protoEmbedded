@@ -1261,8 +1261,8 @@ $EndComp
 Connection ~ 5450 2300
 Wire Wire Line
 	5450 2850 8300 2850
-Text Notes 700  750  0    50   ~ 0
-TODO: \n- wire the speed sensor\n- wire the start/stop
+Text Notes 700  900  0    50   ~ 0
+TODO: \n- wire the speed sensor\n- wire the start/stop\n- wire the e-brakes
 Text Notes 2300 2600 0    50   ~ 0
 Black (2)
 Text Notes 2300 2800 0    50   ~ 0
