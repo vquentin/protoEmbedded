@@ -998,7 +998,7 @@ L Device:C_Small C?
 U 1 1 5EAD4776
 P 2250 9800
 F 0 "C?" V 2479 9800 50  0000 C CNN
-F 1 "FC28COG1H561JNT00" V 2388 9800 50  0000 C CNN
+F 1 "C320C103K1R5TA" V 2388 9800 50  0000 C CNN
 F 2 "" H 2250 9800 50  0001 C CNN
 F 3 "~" H 2250 9800 50  0001 C CNN
 	1    2250 9800
@@ -1722,40 +1722,6 @@ F 3 "~" H 3300 10850 50  0001 C CNN
 $EndComp
 Text Notes 700  9900 0    50   ~ 0
 TODO buck convertor FB loop\norder 4.64kO 1% R\norder 820 pF COG\norder input/output MLCC, polymer Al better for the buck here
-$Comp
-L Device:C_Small C?
-U 1 1 5E40FEC5
-P 2250 9500
-F 0 "C?" V 2479 9500 50  0000 C CNN
-F 1 "K101J15COGH5UH5" V 2388 9500 50  0000 C CNN
-F 2 "" H 2250 9500 50  0001 C CNN
-F 3 "~" H 2250 9500 50  0001 C CNN
-	1    2250 9500
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 5E41038E
-P 2250 9650
-F 0 "C?" V 2479 9650 50  0000 C CNN
-F 1 "K101J15COGH5UH5" V 2388 9650 50  0000 C CNN
-F 2 "" H 2250 9650 50  0001 C CNN
-F 3 "~" H 2250 9650 50  0001 C CNN
-	1    2250 9650
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2350 9800 2350 9650
-Connection ~ 2350 9800
-Wire Wire Line
-	2350 9650 2350 9500
-Connection ~ 2350 9650
-Wire Wire Line
-	2150 9500 2150 9650
-Wire Wire Line
-	2150 9650 2150 9800
-Connection ~ 2150 9650
-Connection ~ 2150 9800
 Connection ~ 1050 10950
 Wire Wire Line
 	1050 10850 1050 10950

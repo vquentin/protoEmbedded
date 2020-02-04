@@ -1092,36 +1092,21 @@ Wire Wire Line
 $Comp
 L Device:CP1_Small C?
 U 1 1 5EB2E9E9
-P 2750 10850
-F 0 "C?" H 2841 10896 50  0000 L CNN
-F 1 "100 uF 150 mOhm" H 2841 10805 50  0000 L CNN
-F 2 "" H 2750 10850 50  0001 C CNN
-F 3 "~" H 2750 10850 50  0001 C CNN
-	1    2750 10850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP1_Small C?
-U 1 1 5EB2F8A1
-P 3000 10850
-F 0 "C?" H 3091 10896 50  0000 L CNN
-F 1 "100 uF 150 mOhm" H 3091 10805 50  0000 L CNN
-F 2 "" H 3000 10850 50  0001 C CNN
-F 3 "~" H 3000 10850 50  0001 C CNN
-	1    3000 10850
+P 2900 10850
+F 0 "C?" H 2991 10896 50  0000 L CNN
+F 1 "RL81C101MDN1KX" H 2991 10805 50  0000 L CNN
+F 2 "" H 2900 10850 50  0001 C CNN
+F 3 "~" H 2900 10850 50  0001 C CNN
+	1    2900 10850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2400 10750 2750 10750
+	2400 10750 2550 10750
 Connection ~ 2400 10750
-Wire Wire Line
-	2750 10750 3000 10750
 Connection ~ 2750 10750
 Wire Wire Line
-	2200 10950 2750 10950
+	2200 10950 2550 10950
 Connection ~ 2200 10950
-Wire Wire Line
-	3300 10950 3000 10950
 Connection ~ 2750 10950
 $Comp
 L power:+7.5V #PWR?
@@ -1724,12 +1709,6 @@ F 3 "~" H 600 10850 50  0001 C CNN
 	1    600  10850
 	1    0    0    -1  
 $EndComp
-Connection ~ 3000 10750
-Wire Wire Line
-	3000 10750 3300 10750
-Connection ~ 3000 10950
-Wire Wire Line
-	3000 10950 2750 10950
 $Comp
 L Device:C_Small C?
 U 1 1 5E40EDD4
@@ -1742,7 +1721,7 @@ F 3 "~" H 3300 10850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 700  9900 0    50   ~ 0
-TODO buck convertor FB loop\norder 4.64kO 1% R\norder 820 pF COG
+TODO buck convertor FB loop\norder 4.64kO 1% R\norder 820 pF COG\norder input/output MLCC, polymer Al better for the buck here
 $Comp
 L Device:C_Small C?
 U 1 1 5E40FEC5
@@ -1787,4 +1766,31 @@ Wire Wire Line
 Connection ~ 1050 10550
 Wire Wire Line
 	1050 10550 1100 10550
+$Comp
+L Device:C_Small C?
+U 1 1 5E491E51
+P 2550 10850
+F 0 "C?" V 2779 10850 50  0000 C CNN
+F 1 "FG16X5R1E476MRT06" V 2688 10850 50  0000 C CNN
+F 2 "" H 2550 10850 50  0001 C CNN
+F 3 "~" H 2550 10850 50  0001 C CNN
+	1    2550 10850
+	1    0    0    -1  
+$EndComp
+Connection ~ 2550 10750
+Connection ~ 2550 10950
+Wire Wire Line
+	2750 10750 2900 10750
+Wire Wire Line
+	2750 10950 2900 10950
+Connection ~ 2900 10750
+Wire Wire Line
+	2900 10750 3300 10750
+Connection ~ 2900 10950
+Wire Wire Line
+	2900 10950 3300 10950
+Wire Wire Line
+	2550 10950 2750 10950
+Wire Wire Line
+	2550 10750 2750 10750
 $EndSCHEMATC
