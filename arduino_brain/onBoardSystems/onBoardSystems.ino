@@ -7,6 +7,8 @@
 
 #include "EdgeDebounceLite.h" // j-bellavance debounce function under GNU license
 
+#include "musics.h" //file including the different melodies
+#include "utils.h" // file including utility functions
 
 EdgeDebounceLite debounce ;
 
@@ -56,7 +58,10 @@ void state_machine_run_horn(uint8_t sensors_horn){
 }
 
 void on_horn(){
-  digitalWrite(output_horn, HIGH);
+  //digitalWrite(output_horn, HIGH);
+  //analogWrite(output_horn, 50); // provides a lower tone (Freq is 490 Hz)
+  playNotes(melodyFinish,melodyFinishLength,output_horn); // plays a little song (PWM is @ 50 %).
+  
 }
 void off_horn(){
   digitalWrite(output_horn, LOW);
