@@ -14,11 +14,11 @@ EdgeDebounceLite debounce ;
 int input_horn = 7 ; // pulls low when button is pressed
 
 // output assignments
-int output_horn = 11; // connected to npn transistor
+int output_horn = 11; // connected to npn transistor HIGH is ON
 
 // horn state machine declarations
 enum State_enum_horn {OFF_HORN, ON_HORN};
-enum Sensors_enum_horn {NONE_HORN, PUSH_BUTTON_HORN};
+enum Sensors_enum_horn {PUSH_BUTTON_HORN,NO_PUSH_BUTTON_HORN};
 
 void state_machine_run_horn(uint8_t sensors_horn);
 void off_horn() ;
@@ -41,13 +41,13 @@ void loop() {
 void state_machine_run_horn(uint8_t sensors_horn){
   switch(state_horn){
     case OFF_HORN:
-      if(sensors_horn != NONE_HORN){
+      if(sensors_horn != NO_PUSH_BUTTON_HORN){
         on_horn();
         state_horn = ON_HORN ;
       }
       break;
     case ON_HORN:
-      if(sensors_horn != ON_HORN){
+      if(sensors_horn != PUSH_BUTTON_HORN){
         off_horn();
         state_horn = OFF_HORN ;
       }

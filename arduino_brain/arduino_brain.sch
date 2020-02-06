@@ -1748,4 +1748,10 @@ Wire Wire Line
 	600  10650 600  10550
 Text Notes -1350 11950 0    50   ~ 0
 12 to 7 V buck converter measurements of consumption / temperature:\n1. load = 5100 Ohm: U_out = 7V, I_out,calc = 1.4 mA, U_in = 12V, I_in = 8 mA ==> efficicency 10 %, P_dissipated = 86.4 mW, DT_meas = 1.1 degC, DT_theo = 4.3 degC\n2. load = Arduino Uno R3, U_out = 7V, I_out_meas = 50 mA, U_in = 12V, I_in = 45 mA ==> efficiency 65%, P_dissipated = 189 mW, DT_meas = 3.6 degC, DT_theo = 9.45 degC\n3. load = Arduino Uno R3 w/ BLE and SIM808 Shield (off): U_out = 7V, I_out_meas = 57 mA, U_in = 12V, I_in = 50 mA ==> efficiency 67%, P_dissipated = 198 mW\n4. load = Arduino Uno R3 w/ BLE and SIM808 Shield (on): U_out = 7V, I_out_meas = 70 mA, U_in = 12V, I_in = 55 mA ==> efficiency 74 %, P_dissipated = 172 mW, DT_meas = 4 degC
+Text Notes 7750 4600 0    50   ~ 0
+TIP120:\nDT_meas = 15.74 - 12.5 = 3.2 degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load)\nI_in_meas@12 V = ~1 A (oscillating fast)
+Text Notes 8050 3700 0    50   ~ 0
+TODO: measure for light beam
+Text Notes 7750 4100 0    50   ~ 0
+TIP120:\nDT_meas = xx - yy = zz degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load)\nI_in_meas@12 V = ~1 A (oscillating fast)
 $EndSCHEMATC
