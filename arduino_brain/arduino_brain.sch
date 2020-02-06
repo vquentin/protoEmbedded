@@ -470,7 +470,7 @@ L Device:R_Small R11
 U 1 1 5E13A0C5
 P 4800 1650
 F 0 "R11" V 5007 1650 50  0000 C CNN
-F 1 "4k7" V 4916 1650 50  0000 C CNN
+F 1 "CFR16-4k7" V 4916 1650 50  0000 C CNN
 F 2 "" V 4730 1650 50  0001 C CNN
 F 3 "~" H 4800 1650 50  0001 C CNN
 	1    4800 1650
@@ -492,7 +492,7 @@ L Device:R_Small R12
 U 1 1 5E13A0DA
 P 5850 1450
 F 0 "R12" V 6057 1450 50  0000 C CNN
-F 1 "1k" V 5966 1450 50  0000 C CNN
+F 1 "CFR16-1k0" V 5966 1450 50  0000 C CNN
 F 2 "" V 5780 1450 50  0001 C CNN
 F 3 "~" H 5850 1450 50  0001 C CNN
 	1    5850 1450
@@ -503,7 +503,7 @@ L Device:R_Small R13
 U 1 1 5E13A0E5
 P 5850 1150
 F 0 "R13" V 6057 1150 50  0000 C CNN
-F 1 "4k7" V 5966 1150 50  0000 C CNN
+F 1 "CFR16-4k7" V 5966 1150 50  0000 C CNN
 F 2 "" V 5780 1150 50  0001 C CNN
 F 3 "~" H 5850 1150 50  0001 C CNN
 	1    5850 1150
@@ -582,16 +582,14 @@ Connection ~ 4950 3250
 $Comp
 L Device:R R7
 U 1 1 5E1687C7
-P 2650 6600
-F 0 "R7" V 2857 6600 50  0000 C CNN
-F 1 "10k" V 2766 6600 50  0000 C CNN
-F 2 "" V 2580 6600 50  0001 C CNN
-F 3 "~" H 2650 6600 50  0001 C CNN
-	1    2650 6600
+P 2950 6600
+F 0 "R7" V 3157 6600 50  0000 C CNN
+F 1 "10k" V 3066 6600 50  0000 C CNN
+F 2 "" V 2880 6600 50  0001 C CNN
+F 3 "~" H 2950 6600 50  0001 C CNN
+	1    2950 6600
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2350 6450 2650 6450
 $Comp
 L Device:R R5
 U 1 1 5E18A3DC
@@ -605,7 +603,6 @@ F 3 "~" H 2050 6600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2050 6450 2350 6450
-Connection ~ 2350 6450
 $Comp
 L Device:R R4
 U 1 1 5E19AF71
@@ -950,7 +947,7 @@ Text Notes 800  3350 0    50   ~ 0
 Text Notes 1650 1950 0    50   ~ 0
 (2?) Blue
 Text GLabel 1300 3600 2    50   Input ~ 0
-A1_A1
+A2_D5
 Wire Wire Line
 	1250 3400 1250 3600
 Wire Wire Line
@@ -1142,17 +1139,17 @@ F 3 "" H -1850 4800 50  0001 C CNN
 $EndComp
 Text GLabel 5400 6650 0    50   Output ~ 0
 A1_D2
-Text GLabel 2750 6850 2    50   Output ~ 0
+Text GLabel 3050 6850 2    50   Output ~ 0
 A1_D0
-Text GLabel 2750 7000 2    50   Output ~ 0
+Text GLabel 3050 7000 2    50   Output ~ 0
 A1_D1
 Text GLabel 5400 6850 0    50   Output ~ 0
 A1_D4
-Text GLabel 2750 7150 2    50   Output ~ 0
+Text GLabel 3050 7150 2    50   Output ~ 0
 A1_D2
 Text GLabel 5400 7150 0    50   Output ~ 0
 A1_D7
-Text GLabel 2750 7300 2    50   Output ~ 0
+Text GLabel 3050 7300 2    50   Output ~ 0
 A1_D4
 Text GLabel 5400 7250 0    50   Output ~ 0
 A1_D8
@@ -1305,30 +1302,10 @@ Wire Wire Line
 Wire Wire Line
 	1350 7150 2350 7150
 Wire Wire Line
-	1350 7300 2650 7300
-Wire Wire Line
 	1750 6450 1750 6400
 Connection ~ 1750 6450
 Wire Wire Line
 	1750 6750 1750 6850
-Connection ~ 1750 6850
-Wire Wire Line
-	1750 6850 2750 6850
-Wire Wire Line
-	2050 6750 2050 7000
-Connection ~ 2050 7000
-Wire Wire Line
-	2050 7000 2750 7000
-Wire Wire Line
-	2350 6750 2350 7150
-Connection ~ 2350 7150
-Wire Wire Line
-	2350 7150 2750 7150
-Wire Wire Line
-	2650 6750 2650 7300
-Connection ~ 2650 7300
-Wire Wire Line
-	2650 7300 2750 7300
 $Comp
 L Device:R R?
 U 1 1 5EEBA83E
@@ -1378,7 +1355,7 @@ $EndComp
 Wire Wire Line
 	1300 4800 1300 4900
 Text GLabel 1000 5300 0    50   Input ~ 0
-A1_A0
+A2_A0
 $Comp
 L power:GND #PWR?
 U 1 1 5EEBA859
@@ -1621,7 +1598,7 @@ Text Notes 5050 7600 2    50   ~ 0
 Screen
 Text Notes 5050 7800 2    50   ~ 0
 Screen
-Text Notes 7550 7100 2    50   ~ 0
+Text Notes -550 6050 2    50   ~ 0
 battery
 Text GLabel 5400 6550 0    50   Output ~ 0
 A1_D1
@@ -1637,7 +1614,7 @@ Text Notes 5100 6900 2    50   ~ 0
 commodo
 Text Notes 5050 7700 2    50   ~ 0
 brakes
-Text Notes 7500 7200 2    50   ~ 0
+Text Notes -2350 5950 2    50   ~ 0
 speed
 Text GLabel 900  4150 0    50   Output ~ 0
 A1_D7
@@ -1749,9 +1726,120 @@ Wire Wire Line
 Text Notes -1350 11950 0    50   ~ 0
 12 to 7 V buck converter measurements of consumption / temperature:\n1. load = 5100 Ohm: U_out = 7V, I_out,calc = 1.4 mA, U_in = 12V, I_in = 8 mA ==> efficicency 10 %, P_dissipated = 86.4 mW, DT_meas = 1.1 degC, DT_theo = 4.3 degC\n2. load = Arduino Uno R3, U_out = 7V, I_out_meas = 50 mA, U_in = 12V, I_in = 45 mA ==> efficiency 65%, P_dissipated = 189 mW, DT_meas = 3.6 degC, DT_theo = 9.45 degC\n3. load = Arduino Uno R3 w/ BLE and SIM808 Shield (off): U_out = 7V, I_out_meas = 57 mA, U_in = 12V, I_in = 50 mA ==> efficiency 67%, P_dissipated = 198 mW\n4. load = Arduino Uno R3 w/ BLE and SIM808 Shield (on): U_out = 7V, I_out_meas = 70 mA, U_in = 12V, I_in = 55 mA ==> efficiency 74 %, P_dissipated = 172 mW, DT_meas = 4 degC
 Text Notes 7750 4600 0    50   ~ 0
-TIP120:\nDT_meas = 15.74 - 12.5 = 3.2 degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load)\nI_in_meas@12 V = ~1 A (oscillating fast)
+TIP120:\nDT_meas = 15.74 - 12.5 = 3.2 degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load). DU_CE = 0.7 V\nI_in_meas@12 V = ~1 A (oscillating fast)
 Text Notes 8050 3700 0    50   ~ 0
-TODO: measure for light beam
+TODO: measure for light beam, check that it will not over-heat.
 Text Notes 7750 4100 0    50   ~ 0
 TIP120:\nDT_meas = xx - yy = zz degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load)\nI_in_meas@12 V = ~1 A (oscillating fast)
+Text Notes 4750 7000 0    50   ~ 0
+soft horn
+$Comp
+L Device:R R?
+U 1 1 5E3DD171
+P 2650 6600
+F 0 "R?" V 2857 6600 50  0000 C CNN
+F 1 "10k" V 2766 6600 50  0000 C CNN
+F 2 "" V 2580 6600 50  0001 C CNN
+F 3 "~" H 2650 6600 50  0001 C CNN
+	1    2650 6600
+	1    0    0    -1  
+$EndComp
+Connection ~ 2650 7300
+Wire Wire Line
+	1350 7300 2650 7300
+Wire Wire Line
+	2650 7300 3050 7300
+Wire Wire Line
+	2650 6750 2650 7300
+Wire Wire Line
+	2050 6750 2050 7000
+Wire Wire Line
+	2350 6750 2350 7150
+Wire Wire Line
+	3050 6850 1750 6850
+Connection ~ 1750 6850
+Wire Wire Line
+	3050 7000 2050 7000
+Connection ~ 2050 7000
+Wire Wire Line
+	3050 7150 2350 7150
+Connection ~ 2350 7150
+Text GLabel 3050 7800 2    50   Output ~ 0
+A1_D5
+Text GLabel 1550 7800 0    50   Output ~ 10
+COMMODO_SOFT_HORN
+Wire Wire Line
+	1550 7800 2950 7800
+Wire Wire Line
+	2350 6450 2650 6450
+Connection ~ 2350 6450
+Connection ~ 2650 6450
+Wire Wire Line
+	2650 6450 2950 6450
+Wire Wire Line
+	2950 6750 2950 7800
+Connection ~ 2950 7800
+Wire Wire Line
+	2950 7800 3050 7800
+Text Notes 7950 2300 0    50   ~ 0
+V_brake = 11.78 V —> P_dis = 0.22*0.1 = 22 mW —> DT_theo = 3.5 degC
+Text Notes 7300 7100 0    50   ~ 0
+thermistor
+$Comp
+L Device:R_Small R?
+U 1 1 5E43CFA1
+P 8800 7050
+F 0 "R?" V 9007 7050 50  0000 C CNN
+F 1 "2k7" V 8916 7050 50  0000 C CNN
+F 2 "" V 8730 7050 50  0001 C CNN
+F 3 "~" H 8800 7050 50  0001 C CNN
+	1    8800 7050
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8550 7050 0    50   Output ~ 0
+A1_A0
+$Comp
+L power:GND #PWR?
+U 1 1 5E44C1CB
+P 9000 7050
+F 0 "#PWR?" H 9000 6800 50  0001 C CNN
+F 1 "GND" H 9005 6877 50  0000 C CNN
+F 2 "" H 9000 7050 50  0001 C CNN
+F 3 "" H 9000 7050 50  0001 C CNN
+	1    9000 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 7050 9000 7050
+$Comp
+L Device:Thermistor TH?
+U 1 1 5E45B7DF
+P 8650 6650
+F 0 "TH?" H 8755 6696 50  0000 L CNN
+F 1 "Thermistor" H 8755 6605 50  0000 L CNN
+F 2 "" H 8650 6650 50  0001 C CNN
+F 3 "~" H 8650 6650 50  0001 C CNN
+	1    8650 6650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 7050 8650 7050
+Wire Wire Line
+	8650 6850 8650 7050
+Connection ~ 8650 7050
+Wire Wire Line
+	8650 7050 8700 7050
+$Comp
+L power:+5V #PWR?
+U 1 1 5E493EB9
+P 8650 6350
+F 0 "#PWR?" H 8650 6200 50  0001 C CNN
+F 1 "+5V" H 8665 6523 50  0000 C CNN
+F 2 "" H 8650 6350 50  0001 C CNN
+F 3 "" H 8650 6350 50  0001 C CNN
+	1    8650 6350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 6350 8650 6450
 $EndSCHEMATC
