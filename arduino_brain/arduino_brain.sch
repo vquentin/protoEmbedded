@@ -328,7 +328,7 @@ L Device:R_Small R9
 U 1 1 5E0B3D4A
 P 5850 4550
 F 0 "R9" V 6057 4550 50  0000 C CNN
-F 1 "3.3k" V 5966 4550 50  0000 C CNN
+F 1 "CFR16-3K3" V 5966 4550 50  0000 C CNN
 F 2 "" V 5780 4550 50  0001 C CNN
 F 3 "~" H 5850 4550 50  0001 C CNN
 	1    5850 4550
@@ -1708,7 +1708,7 @@ F 3 "~" H 3300 10850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 700  9900 0    50   ~ 0
-TODO buck convertor FB loop\norder 4.64kO 1% R\norder 820 pF COG\norder input/output MLCC, polymer Al better for the buck here
+TODO buck convertor FB loop\norder 4.64kO 1% R\norder 820 pF COG\norder input/output MLCC, polymer Al better for the buck here\norder better solenoid
 Connection ~ 1050 10950
 Wire Wire Line
 	1050 10850 1050 10950
@@ -1746,4 +1746,6 @@ Wire Wire Line
 	600  10850 600  10950
 Wire Wire Line
 	600  10650 600  10550
+Text Notes -1350 11950 0    50   ~ 0
+12 to 7 V buck converter measurements of consumption / temperature:\n1. load = 5100 Ohm: U_out = 7V, I_out,calc = 1.4 mA, U_in = 12V, I_in = 8 mA ==> efficicency 10 %, P_dissipated = 86.4 mW, DT_meas = 1.1 degC, DT_theo = 4.3 degC\n2. load = Arduino Uno R3, U_out = 7V, I_out_meas = 50 mA, U_in = 12V, I_in = 45 mA ==> efficiency 65%, P_dissipated = 189 mW, DT_meas = 3.6 degC, DT_theo = 9.45 degC\n3. load = Arduino Uno R3 w/ BLE and SIM808 Shield (off): U_out = 7V, I_out_meas = 57 mA, U_in = 12V, I_in = 50 mA ==> efficiency 67%, P_dissipated = 198 mW\n4. load = Arduino Uno R3 w/ BLE and SIM808 Shield (on): U_out = 7V, I_out_meas = 70 mA, U_in = 12V, I_in = 55 mA ==> efficiency 74 %, P_dissipated = 172 mW, DT_meas = 4 degC
 $EndSCHEMATC
