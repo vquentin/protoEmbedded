@@ -1783,7 +1783,7 @@ Wire Wire Line
 	2950 7800 3050 7800
 Text Notes 7950 2300 0    50   ~ 0
 V_brake = 11.78 V —> P_dis = 0.22*0.1 = 22 mW —> DT_theo = 3.5 degC
-Text Notes 7450 7050 0    50   ~ 0
+Text Notes 7300 7100 0    50   ~ 0
 thermistor
 $Comp
 L Device:R_Small R?
