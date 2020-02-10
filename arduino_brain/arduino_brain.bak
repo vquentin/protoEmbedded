@@ -740,7 +740,7 @@ Wire Wire Line
 Wire Wire Line
 	7000 3400 6850 3400
 Wire Wire Line
-	6850 850  6850 2100
+	6850 850  6850 1250
 Connection ~ 6850 2100
 Wire Wire Line
 	6300 2650 6300 2600
@@ -1842,4 +1842,21 @@ Wire Wire Line
 	6300 4350 6850 4350
 Wire Wire Line
 	6550 4550 6850 4550
+$Comp
+L Device:C_Small C?
+U 1 1 5E4F55BB
+P 6400 1250
+F 0 "C?" V 6629 1250 50  0000 C CNN
+F 1 "C320C104M5R5TA" V 6538 1250 50  0000 C CNN
+F 2 "" H 6400 1250 50  0001 C CNN
+F 3 "~" H 6400 1250 50  0001 C CNN
+	1    6400 1250
+	0    1    1    0   
+$EndComp
+Connection ~ 6300 1250
+Wire Wire Line
+	6500 1250 6850 1250
+Connection ~ 6850 1250
+Wire Wire Line
+	6850 1250 6850 2100
 $EndSCHEMATC
