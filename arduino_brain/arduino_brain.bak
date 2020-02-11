@@ -1518,8 +1518,6 @@ Wire Wire Line
 Connection ~ 6550 1150
 Wire Wire Line
 	6550 1150 6550 2000
-Wire Wire Line
-	6300 1150 5950 1150
 Connection ~ 6300 1150
 Wire Wire Line
 	6700 1650 6300 1650
@@ -1850,4 +1848,25 @@ Wire Wire Line
 	6700 4550 6850 4550
 Wire Wire Line
 	6300 4750 6700 4750
+$Comp
+L Device:C_Small C?
+U 1 1 5E598FF6
+P 6000 1300
+F 0 "C?" V 6229 1300 50  0000 C CNN
+F 1 "1C25X7R104K100B" V 6138 1300 50  0000 C CNN
+F 2 "" H 6000 1300 50  0001 C CNN
+F 3 "~" H 6000 1300 50  0001 C CNN
+	1    6000 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 1150 6000 1150
+Wire Wire Line
+	6000 1200 6000 1150
+Connection ~ 6000 1150
+Wire Wire Line
+	6000 1150 6300 1150
+Wire Wire Line
+	6000 1400 6000 1450
+Connection ~ 6000 1450
 $EndSCHEMATC
