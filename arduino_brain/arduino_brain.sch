@@ -1498,10 +1498,7 @@ Wire Wire Line
 	4900 1650 4950 1650
 Wire Wire Line
 	5250 1850 4950 1850
-Wire Wire Line
-	4950 1850 4950 2500
 Connection ~ 4950 2700
-Connection ~ 4950 2500
 Wire Wire Line
 	5250 1450 5700 1450
 Wire Wire Line
@@ -1529,8 +1526,6 @@ Wire Wire Line
 	6550 2000 6550 2600
 Wire Wire Line
 	6850 2100 6850 2850
-Wire Wire Line
-	4950 2500 4950 2700
 Text GLabel 7000 7150 2    50   Output ~ 0
 A1_A1
 Text GLabel 7000 7250 2    50   Output ~ 0
@@ -1851,20 +1846,18 @@ Wire Wire Line
 $Comp
 L Device:C_Small C?
 U 1 1 5E598FF6
-P 5850 750
-F 0 "C?" V 6079 750 50  0000 C CNN
-F 1 "1C25X7R104K100B" V 5988 750 50  0000 C CNN
-F 2 "" H 5850 750 50  0001 C CNN
-F 3 "~" H 5850 750 50  0001 C CNN
-	1    5850 750 
-	0    -1   -1   0   
+P 4950 1750
+F 0 "C?" V 5179 1750 50  0000 C CNN
+F 1 "1C25X7R104K100B" V 5088 1750 50  0000 C CNN
+F 2 "" H 4950 1750 50  0001 C CNN
+F 3 "~" H 4950 1750 50  0001 C CNN
+	1    4950 1750
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	5950 750  5950 1150
-Connection ~ 5950 1150
-Wire Wire Line
-	5750 750  5750 1150
-Wire Wire Line
 	5950 1150 6300 1150
-Connection ~ 5750 1150
+Wire Wire Line
+	4950 1850 4950 2700
+Connection ~ 4950 1850
+Connection ~ 4950 1650
 $EndSCHEMATC
