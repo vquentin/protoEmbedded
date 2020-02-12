@@ -94,11 +94,15 @@
 // public constants containing notes and their duration
 // note durations: 4 = quarter note, 8 = eighth note, etc., on a 1000 ms basis to get note duration in ms
 
-#define melodyFinishLength 8
-int melodyFinish[melodyFinishLength][2] = {NOTE_C4,4, NOTE_G3,8, NOTE_G3,8, NOTE_A3,4, NOTE_G3,4, 0,4, NOTE_B3,4, NOTE_C4,4};
+#define melodySoftLength 2
+//int melodySoft[melodySoftLength][2] = {NOTE_B5,8, NOTE_B5,8};
+int melodySoftTimed[melodySoftLength][3] = {NOTE_B5,0,125,NOTE_B5,163,288};
 
-#define melodyAlarmLength 8
-int melodyAlarm[melodyAlarmLength][2] = {NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2};
+//#define melodyFinishLength 8
+//int melodyFinish[melodyFinishLength][2] = {NOTE_C4,4, NOTE_G3,8, NOTE_G3,8, NOTE_A3,4, NOTE_G3,4, 0,4, NOTE_B3,4, NOTE_C4,4};
 
-#define melodyStartLength 2
-int melodyStart[melodyStartLength][2] = {NOTE_B5,8, NOTE_E6,3};
+//#define melodyAlarmLength 8
+//int melodyAlarm[melodyAlarmLength][2] = {NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2, NOTE_FS5,2, NOTE_C5,2};
+
+//#define melodyStartLength 2
+//int melodyStart[melodyStartLength][2] = {NOTE_B5,8, NOTE_E6,3};
