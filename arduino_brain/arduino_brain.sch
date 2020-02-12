@@ -299,8 +299,6 @@ F 3 "" H 4950 4750 50  0001 C CNN
 	1    4950 4750
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7000 4550 6850 4550
 $Comp
 L Device:R_Small R20
 U 1 1 5E0AE97B
@@ -444,12 +442,12 @@ Wire Wire Line
 $Comp
 L Device:D_Small D2
 U 1 1 5E119BF7
-P 6850 4450
-F 0 "D2" H 6850 4666 50  0000 C CNN
-F 1 "SB560" H 6850 4575 50  0000 C CNN
-F 2 "" H 6850 4450 50  0001 C CNN
-F 3 "~" H 6850 4450 50  0001 C CNN
-	1    6850 4450
+P 7000 5100
+F 0 "D2" H 7000 5316 50  0000 C CNN
+F 1 "SB560" H 7000 5225 50  0000 C CNN
+F 2 "" H 7000 5100 50  0001 C CNN
+F 3 "~" H 7000 5100 50  0001 C CNN
+	1    7000 5100
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
@@ -1394,10 +1392,6 @@ Wire Wire Line
 	6550 4050 7000 4050
 Wire Wire Line
 	6550 4050 6550 4550
-Connection ~ 6850 4350
-Wire Wire Line
-	6850 4350 7000 4350
-Connection ~ 6850 4550
 Connection ~ 4950 4750
 $Comp
 L Transistor_BJT:2N3904 Q10
@@ -1833,14 +1827,10 @@ Wire Wire Line
 	6550 4550 6700 4550
 Wire Wire Line
 	6850 850  6850 2100
-Wire Wire Line
-	6300 4350 6850 4350
 Connection ~ 6300 4750
 Wire Wire Line
 	6700 4750 6700 4550
 Connection ~ 6700 4550
-Wire Wire Line
-	6700 4550 6850 4550
 Wire Wire Line
 	6300 4750 6700 4750
 $Comp
@@ -1879,4 +1869,35 @@ Wire Wire Line
 Wire Wire Line
 	6000 1400 6000 1450
 Connection ~ 6000 1450
+Wire Wire Line
+	6300 4350 6900 4350
+Wire Wire Line
+	6700 4550 6800 4550
+$Comp
+L Device:R_Small R?
+U 1 1 5E441BCC
+P 7100 5000
+F 0 "R?" V 7307 5000 50  0000 C CNN
+F 1 "CFR16-100R" V 7216 5000 50  0000 C CNN
+F 2 "" V 7030 5000 50  0001 C CNN
+F 3 "~" H 7100 5000 50  0001 C CNN
+	1    7100 5000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7000 5200 6800 5200
+Wire Wire Line
+	6800 5200 6800 4550
+Connection ~ 6800 4550
+Wire Wire Line
+	6800 4550 7000 4550
+Wire Wire Line
+	7200 5000 7200 4700
+Wire Wire Line
+	7200 4700 6900 4700
+Wire Wire Line
+	6900 4700 6900 4350
+Connection ~ 6900 4350
+Wire Wire Line
+	6900 4350 7000 4350
 $EndSCHEMATC
