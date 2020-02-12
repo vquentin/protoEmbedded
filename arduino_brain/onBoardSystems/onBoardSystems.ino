@@ -15,6 +15,7 @@ EdgeDebounceLite debounce ;
 // alarm state machine declarations
 enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE};
 alarm_states_t state_alarm = ALARM_INACTIVE;
+//alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 
 // horn state machine declarations
 enum state_enum_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
@@ -197,3 +198,13 @@ buttons_enum_horn_t read_buttons_horn() {
   return debounce.pin(input_light); // or PUSH_BUTTON_LIGHT
   }
 */
+
+/*
+TODO:
+ - implement brake state machine
+ - implement OLED display state machine
+ - implement eco mode state machine (decide if we need to control it via smartphone too, or just indicate it)
+ - implement blinkers state machine
+
+ 
+ */

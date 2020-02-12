@@ -932,7 +932,7 @@ Text Notes 800  3350 0    50   ~ 0
 Text Notes 1650 1950 0    50   ~ 0
 (2?) Blue
 Text GLabel 1300 3600 2    50   Input ~ 0
-A2_D5
+A2_D2
 Wire Wire Line
 	1250 3400 1250 3600
 Wire Wire Line
@@ -1584,7 +1584,7 @@ Text Notes 5100 6900 2    50   ~ 0
 commodo
 Text Notes 5050 7700 2    50   ~ 0
 brakes
-Text Notes -2350 5950 2    50   ~ 0
+Text Notes -2350 5650 2    50   ~ 0
 speed
 Text GLabel 900  4150 0    50   Output ~ 0
 A1_D7
