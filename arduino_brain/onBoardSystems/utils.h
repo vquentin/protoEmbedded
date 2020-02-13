@@ -3,6 +3,14 @@
 
 // this is already defined in the Arduino IDE, no need to use here
 //#define min(a, b) (((a) < (b)) ? (a) : (b)) 
+/*
+#ifdef DEBUG
+ #define DEBUG_PRINTLN(x)  Serial.println (x)
+ #define DEBUG_PRINT(x) Serial.print(x)
+#else
+ #define DEBUG_PRINTLN(x)
+ #define DEBUG_PRINT(x)
+#endif*/
 
 /* This function plays the notes contained in pitch array, the array has two columns with tones and duration
  * Uses a passive buzzer connected to PIN_MUSIC pin

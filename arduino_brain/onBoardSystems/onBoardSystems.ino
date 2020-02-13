@@ -14,12 +14,10 @@ EdgeDebounceLite debounce ;
 
 // alarm state machine declarations
 enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE};
-alarm_states_t state_alarm = ALARM_INACTIVE;
-//alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 
 // horn state machine declarations
-enum state_enum_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
-enum buttons_enum_horn_t {HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH};
+enum state_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
+enum buttons_horn_t {HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH};
 unsigned long time_start_soft_horn = 0 ;
 
 void state_machine_horn();
@@ -29,24 +27,12 @@ void on_horn() ;
 void alarm_horn(unsigned long milliseconds_current) ;
 bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_current);
 // readings
-buttons_enum_horn_t read_buttons_horn();
+buttons_horn_t read_buttons_horn();
 
-
-
-state_enum_horn_t state_horn = HORN_OFF ; // horn FSM initialization
-
-
-/*
-  // light state machine declarations
-  enum State_enum_light {OFF_LIGHT, ON_LIGHT};
-  enum Sensors_enum_light {PUSH_BUTTON_LIGHT,NO_PUSH_BUTTON_LIGHT};
-
-  void state_machine_run_light(uint8_t sensors_light);
-  void off_light() ;
-  void on_light() ;
-  uint8_t read_button_light();
-  uint8_t state_light = OFF_LIGHT ;
-*/
+// initialization of FSMs
+alarm_states_t state_alarm = ALARM_INACTIVE;
+//alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
+state_horn_t state_horn = HORN_OFF ; // horn FSM initialization
 
 void setup() {
   pinMode(INPUT_HORN_PIN, INPUT);
@@ -55,13 +41,12 @@ void setup() {
 
   pinMode(OUTPUT_HORN_PIN, OUTPUT);
   pinMode(OUTPUT_BRAKE_PIN, OUTPUT);
+
+  //Serial.begin(9600);
 }
 
 void loop() {
   state_machine_horn();
-
-  //state_machine_run_light(read_button_light());
-
   delay(10);
 }
 
@@ -118,8 +103,6 @@ void state_machine_horn() {
 void on_horn() {
   noTone(OUTPUT_HORN_PIN);
   digitalWrite(OUTPUT_HORN_PIN, HIGH);
-  //analogWrite(output_horn, 100); // provides a lower tone (Freq is 490 Hz)
-  //playNotes(melodyFinish,melodyFinishLength,output_horn); // plays a little song (PWM is @ 50 %).
 }
 void off_horn() {
   noTone(OUTPUT_HORN_PIN);
@@ -127,15 +110,16 @@ void off_horn() {
 }
 
 // plays a tune going up and down (police siren)
-void alarm_horn(unsigned long milliseconds_start) {
-  unsigned long t = (millis()-milliseconds_start) % (2*ALARM_CYCLE_TIME);
+void alarm_horn(unsigned long milliseconds_current) {
+  unsigned long t = (milliseconds_current) % (2*ALARM_CYCLE_TIME);
   if(t<=ALARM_CYCLE_TIME){
-    tone(OUTPUT_HORN_PIN,ALARM_START_TONE+(ALARM_END_TONE-ALARM_START_TONE)/ALARM_CYCLE_TIME*t,50);
+    tone(OUTPUT_HORN_PIN,ALARM_START_TONE+(ALARM_END_TONE-ALARM_START_TONE)*t/ALARM_CYCLE_TIME,50);
   }
-  else tone(OUTPUT_HORN_PIN,ALARM_START_TONE-(ALARM_END_TONE-ALARM_START_TONE)/ALARM_CYCLE_TIME*(t-ALARM_CYCLE_TIME),50);
+  else {
+    tone(OUTPUT_HORN_PIN,ALARM_END_TONE-(ALARM_END_TONE-ALARM_START_TONE)*(t-ALARM_CYCLE_TIME)/ALARM_CYCLE_TIME,50);
+  }
 }
 
-// melodySoftTimed[i][0] = freq in Hz, melodySoftTimed[i][1] = start time in ms, melodySoftTimed[i][2] = stop time in ms
 bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_current) {
   unsigned long t = milliseconds_current-milliseconds_start ;
   if(t>melodySoftTimed[melodySoftLength-1][2]){
@@ -150,12 +134,7 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
   return true;
 }
 
-
-/*
-   Function read_buttons_horn()
-   returns either HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH
-*/
-buttons_enum_horn_t read_buttons_horn() {
+buttons_horn_t read_buttons_horn() {
   if (debounce.pin(INPUT_HORN_PIN) == LOW) {
     return HORN_PUSH_MAIN ;
   }
@@ -201,9 +180,10 @@ buttons_enum_horn_t read_buttons_horn() {
 
 /*
 TODO:
+ - brake light flickering w/ emitter/follower config?
  - implement brake state machine
  - implement OLED display state machine
- - implement eco mode state machine (decide if we need to control it via smartphone too, or just indicate it)
+ - implement eco mode state machine
  - implement blinkers state machine
 
  
