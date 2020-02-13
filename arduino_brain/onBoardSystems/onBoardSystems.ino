@@ -41,8 +41,6 @@ void setup() {
 
   pinMode(OUTPUT_HORN_PIN, OUTPUT);
   pinMode(OUTPUT_BRAKE_PIN, OUTPUT);
-
-  //Serial.begin(9600);
 }
 
 void loop() {
@@ -180,7 +178,6 @@ buttons_horn_t read_buttons_horn() {
 
 /*
 TODO:
- - brake light flickering w/ emitter/follower config?
  - implement brake state machine
  - implement OLED display state machine
  - implement eco mode state machine
