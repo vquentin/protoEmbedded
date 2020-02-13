@@ -752,22 +752,22 @@ Wire Wire Line
 $Comp
 L User_library:Adafruit_2719(SPI) U?
 U 1 1 5E5A5306
-P 7400 10400
-F 0 "U?" V 7773 9250 50  0000 C CNN
-F 1 "Adafruit_2719(SPI)" V 7864 9250 50  0000 C CNN
-F 2 "" H 7400 10400 50  0001 C CNN
-F 3 "" H 7400 10400 50  0001 C CNN
-	1    7400 10400
+P 7400 10600
+F 0 "U?" V 7773 9450 50  0000 C CNN
+F 1 "Adafruit_2719(SPI)" V 7864 9450 50  0000 C CNN
+F 2 "" H 7400 10600 50  0001 C CNN
+F 3 "" H 7400 10600 50  0001 C CNN
+	1    7400 10600
 	0    1    1    0   
 $EndComp
 Wire Wire Line
 	6000 8200 6000 8150
 Wire Wire Line
-	7100 10050 7100 9900
+	7100 10250 7100 10100
 Wire Wire Line
-	7200 10050 7400 10050
+	7200 10250 7400 10250
 Wire Wire Line
-	7400 10050 7400 9900
+	7400 10250 7400 10100
 $Comp
 L Transistor_BJT:2N3904 Q1
 U 1 1 5E482565
@@ -1223,15 +1223,15 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5ED21851
-P 7400 10050
-F 0 "#PWR?" H 7400 9800 50  0001 C CNN
-F 1 "GND" H 7405 9877 50  0000 C CNN
-F 2 "" H 7400 10050 50  0001 C CNN
-F 3 "" H 7400 10050 50  0001 C CNN
-	1    7400 10050
+P 7400 10250
+F 0 "#PWR?" H 7400 10000 50  0001 C CNN
+F 1 "GND" H 7405 10077 50  0000 C CNN
+F 2 "" H 7400 10250 50  0001 C CNN
+F 3 "" H 7400 10250 50  0001 C CNN
+	1    7400 10250
 	1    0    0    -1  
 $EndComp
-Connection ~ 7400 10050
+Connection ~ 7400 10250
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5ED2BB41
@@ -1248,12 +1248,12 @@ Wire Wire Line
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5ED35409
-P 7100 9650
-F 0 "#PWR?" H 7100 9500 50  0001 C CNN
-F 1 "+3V3" H 7115 9823 50  0000 C CNN
-F 2 "" H 7100 9650 50  0001 C CNN
-F 3 "" H 7100 9650 50  0001 C CNN
-	1    7100 9650
+P 7100 9850
+F 0 "#PWR?" H 7100 9700 50  0001 C CNN
+F 1 "+3V3" H 7115 10023 50  0000 C CNN
+F 2 "" H 7100 9850 50  0001 C CNN
+F 3 "" H 7100 9850 50  0001 C CNN
+	1    7100 9850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1480,43 +1480,21 @@ Wire Wire Line
 	-1250 6550 -1100 6550
 Text Notes 5100 6800 2    50   ~ 0
 horn
-Wire Notes Line
-	6950 9400 5550 9400
-Wire Notes Line
-	5550 9400 5550 9100
-Wire Notes Line
-	5550 9100 6950 9100
-Wire Notes Line
-	6950 9100 6950 9400
-Text Notes 6650 9300 2    50   ~ 0
-To low-level coupler
 Wire Wire Line
-	7350 9900 7400 9900
+	7350 10100 7400 10100
 Wire Wire Line
-	7150 9900 7100 9900
-Connection ~ 7100 9900
-Wire Wire Line
-	7100 9900 7100 9650
-Text GLabel 6900 9000 1    50   Output ~ 0
+	7150 10100 7100 10100
+Connection ~ 7100 10100
+Text GLabel 6900 8750 1    50   Output ~ 0
 A1_D8
-Wire Wire Line
-	6600 10050 6600 9000
-Text GLabel 6600 9000 1    50   Output ~ 0
+Text GLabel 6600 8750 1    50   Output ~ 0
 A1_D13
-Text GLabel 6500 9000 1    50   Output ~ 0
+Text GLabel 6500 8750 1    50   Output ~ 0
 A1_D11
-Wire Wire Line
-	6500 10050 6500 9000
-Text GLabel 5800 9000 1    50   Output ~ 0
+Text GLabel 5800 8750 1    50   Output ~ 0
 A1_D10
-Wire Wire Line
-	5800 10050 5800 9000
-Wire Wire Line
-	6900 9000 6900 10050
-Text GLabel 5700 9000 1    50   Output ~ 0
+Text GLabel 5700 8750 1    50   Output ~ 0
 A1_D9
-Wire Wire Line
-	5700 9000 5700 10050
 Text Notes 5100 7300 2    50   ~ 0
 Screen
 Text Notes 5100 7400 2    50   ~ 0
@@ -2016,12 +1994,74 @@ Connection ~ 6000 3400
 $Comp
 L Device:CP1_Small C?
 U 1 1 5E576B05
-P 7250 9900
-F 0 "C?" V 7478 9900 50  0000 C CNN
-F 1 "220uF" V 7387 9900 50  0000 C CNN
-F 2 "" H 7250 9900 50  0001 C CNN
-F 3 "~" H 7250 9900 50  0001 C CNN
-	1    7250 9900
+P 7250 10100
+F 0 "C?" V 7478 10100 50  0000 C CNN
+F 1 "220uF" V 7387 10100 50  0000 C CNN
+F 2 "" H 7250 10100 50  0001 C CNN
+F 3 "~" H 7250 10100 50  0001 C CNN
+	1    7250 10100
 	0    -1   -1   0   
 $EndComp
+Text Notes 7200 10250 1    50   ~ 0
+black
+Text Notes 7100 10250 1    50   ~ 0
+red
+Text Notes 6900 10250 1    50   ~ 0
+green
+Text Notes 6600 10250 1    50   ~ 0
+orange
+Text Notes 6500 10250 1    50   ~ 0
+yellow
+Text Notes 5800 10250 1    50   ~ 0
+purple
+Text Notes 5700 10250 1    50   ~ 0
+blue
+$Comp
+L Analog_Switch:CD4051B U?
+U 1 1 5E57C081
+P 6300 9400
+F 0 "U?" V 6346 10144 50  0000 L CNN
+F 1 "CD4050BE" V 6255 10144 50  0000 L CNN
+F 2 "" H 6450 8650 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4052b.pdf" H 6280 9500 50  0001 C CNN
+	1    6300 9400
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7100 9850 7100 9900
+Wire Wire Line
+	6700 9900 6700 10000
+Wire Wire Line
+	6700 10000 6900 10000
+Wire Wire Line
+	6900 10000 6900 10250
+Wire Wire Line
+	6100 8900 6100 8800
+Wire Wire Line
+	6100 8800 7500 8800
+Wire Wire Line
+	7500 8800 7500 9900
+Wire Wire Line
+	7500 9900 7100 9900
+Connection ~ 7100 9900
+Wire Wire Line
+	7100 9900 7100 10100
+Wire Wire Line
+	6600 10250 6600 10000
+Wire Wire Line
+	6600 10000 5300 10000
+Wire Wire Line
+	5300 10000 5300 8850
+Wire Wire Line
+	5300 8850 5900 8850
+Wire Wire Line
+	5900 8850 5900 8900
+Wire Wire Line
+	6500 10250 6500 10050
+Wire Wire Line
+	6500 10050 5250 10050
+Wire Wire Line
+	5250 10050 5250 8900
+Wire Wire Line
+	5250 8900 5800 8900
 $EndSCHEMATC

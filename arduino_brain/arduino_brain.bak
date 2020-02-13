@@ -762,17 +762,6 @@ F 3 "" H 7400 10400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6000 8200 6000 8150
-$Comp
-L Device:C_Small C?
-U 1 1 5E5D48A8
-P 7250 9900
-F 0 "C?" V 7479 9900 50  0000 C CNN
-F 1 "220uF" V 7388 9900 50  0000 C CNN
-F 2 "" H 7288 9750 50  0001 C CNN
-F 3 "~" H 7250 9900 50  0001 C CNN
-	1    7250 9900
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	7100 10050 7100 9900
 Wire Wire Line
@@ -2024,4 +2013,29 @@ Connection ~ 6000 2850
 Wire Wire Line
 	6000 3350 6000 3400
 Connection ~ 6000 3400
+$Comp
+L Device:CP1_Small C?
+U 1 1 5E576B05
+P 7250 9900
+F 0 "C?" V 7478 9900 50  0000 C CNN
+F 1 "220uF" V 7387 9900 50  0000 C CNN
+F 2 "" H 7250 9900 50  0001 C CNN
+F 3 "~" H 7250 9900 50  0001 C CNN
+	1    7250 9900
+	0    -1   -1   0   
+$EndComp
+Text Notes 7200 10050 1    50   ~ 0
+black
+Text Notes 7100 10050 1    50   ~ 0
+red
+Text Notes 6900 10050 1    50   ~ 0
+green
+Text Notes 6600 10050 1    50   ~ 0
+orange
+Text Notes 6500 10050 1    50   ~ 0
+yellow
+Text Notes 5800 10050 1    50   ~ 0
+purple
+Text Notes 5700 10050 1    50   ~ 0
+blue
 $EndSCHEMATC

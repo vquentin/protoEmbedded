@@ -30,8 +30,8 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
 buttons_horn_t read_buttons_horn();
 
 // initialization of FSMs
-alarm_states_t state_alarm = ALARM_INACTIVE;
-//alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
+//alarm_states_t state_alarm = ALARM_INACTIVE;
+alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 state_horn_t state_horn = HORN_OFF ; // horn FSM initialization
 
 void setup() {
@@ -175,13 +175,3 @@ buttons_horn_t read_buttons_horn() {
   return debounce.pin(input_light); // or PUSH_BUTTON_LIGHT
   }
 */
-
-/*
-TODO:
- - implement brake state machine
- - implement OLED display state machine
- - implement eco mode state machine
- - implement blinkers state machine
-
- 
- */
