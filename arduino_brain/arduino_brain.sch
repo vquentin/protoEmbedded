@@ -752,22 +752,22 @@ Wire Wire Line
 $Comp
 L User_library:Adafruit_2719(SPI) U?
 U 1 1 5E5A5306
-P 7400 10600
-F 0 "U?" V 7773 9450 50  0000 C CNN
-F 1 "Adafruit_2719(SPI)" V 7864 9450 50  0000 C CNN
-F 2 "" H 7400 10600 50  0001 C CNN
-F 3 "" H 7400 10600 50  0001 C CNN
-	1    7400 10600
-	0    1    1    0   
+P 7750 8800
+F 0 "U?" V 8123 7650 50  0000 C CNN
+F 1 "Adafruit_2719(SPI)" V 8214 7650 50  0000 C CNN
+F 2 "" H 7750 8800 50  0001 C CNN
+F 3 "" H 7750 8800 50  0001 C CNN
+	1    7750 8800
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	6000 8200 6000 8150
 Wire Wire Line
-	7100 10250 7100 10100
+	7400 9100 7250 9100
 Wire Wire Line
-	7200 10250 7400 10250
+	7400 9000 7400 8800
 Wire Wire Line
-	7400 10250 7400 10100
+	7400 8800 7250 8800
 $Comp
 L Transistor_BJT:2N3904 Q1
 U 1 1 5E482565
@@ -1223,15 +1223,15 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5ED21851
-P 7400 10250
-F 0 "#PWR?" H 7400 10000 50  0001 C CNN
-F 1 "GND" H 7405 10077 50  0000 C CNN
-F 2 "" H 7400 10250 50  0001 C CNN
-F 3 "" H 7400 10250 50  0001 C CNN
-	1    7400 10250
-	1    0    0    -1  
+P 7400 8800
+F 0 "#PWR?" H 7400 8550 50  0001 C CNN
+F 1 "GND" H 7405 8627 50  0000 C CNN
+F 2 "" H 7400 8800 50  0001 C CNN
+F 3 "" H 7400 8800 50  0001 C CNN
+	1    7400 8800
+	0    -1   -1   0   
 $EndComp
-Connection ~ 7400 10250
+Connection ~ 7400 8800
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5ED2BB41
@@ -1248,13 +1248,13 @@ Wire Wire Line
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5ED35409
-P 7100 9850
-F 0 "#PWR?" H 7100 9700 50  0001 C CNN
-F 1 "+3V3" H 7115 10023 50  0000 C CNN
-F 2 "" H 7100 9850 50  0001 C CNN
-F 3 "" H 7100 9850 50  0001 C CNN
-	1    7100 9850
-	1    0    0    -1  
+P 7000 9100
+F 0 "#PWR?" H 7000 8950 50  0001 C CNN
+F 1 "+3V3" H 7015 9273 50  0000 C CNN
+F 2 "" H 7000 9100 50  0001 C CNN
+F 3 "" H 7000 9100 50  0001 C CNN
+	1    7000 9100
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	1350 6850 1750 6850
@@ -1481,19 +1481,17 @@ Wire Wire Line
 Text Notes 5100 6800 2    50   ~ 0
 horn
 Wire Wire Line
-	7350 10100 7400 10100
+	7250 8850 7250 8800
 Wire Wire Line
-	7150 10100 7100 10100
-Connection ~ 7100 10100
-Text GLabel 6900 8750 1    50   Output ~ 0
+	7250 9050 7250 9100
+Connection ~ 7250 9100
+Text GLabel 6700 9600 2    50   Output ~ 0
 A1_D8
-Text GLabel 6600 8750 1    50   Output ~ 0
-A1_D13
-Text GLabel 6500 8750 1    50   Output ~ 0
+Text GLabel 5350 10200 0    50   Output ~ 0
 A1_D11
-Text GLabel 5800 8750 1    50   Output ~ 0
+Text GLabel 6300 10600 2    50   Output ~ 0
 A1_D10
-Text GLabel 5700 8750 1    50   Output ~ 0
+Text GLabel 5350 9800 0    50   Output ~ 0
 A1_D9
 Text Notes 5100 7300 2    50   ~ 0
 Screen
@@ -1630,7 +1628,7 @@ Wire Wire Line
 	600  10850 600  10950
 Wire Wire Line
 	600  10650 600  10550
-Text Notes -1350 11950 0    50   ~ 0
+Text Notes -1150 13200 0    50   ~ 0
 12 to 7 V buck converter measurements of consumption / temperature:\n1. load = 5100 Ohm: U_out = 7V, I_out,calc = 1.4 mA, U_in = 12V, I_in = 8 mA ==> efficicency 10 %, P_dissipated = 86.4 mW, DT_meas = 1.1 degC, DT_theo = 4.3 degC\n2. load = Arduino Uno R3, U_out = 7V, I_out_meas = 50 mA, U_in = 12V, I_in = 45 mA ==> efficiency 65%, P_dissipated = 189 mW, DT_meas = 3.6 degC, DT_theo = 9.45 degC\n3. load = Arduino Uno R3 w/ BLE and SIM808 Shield (off): U_out = 7V, I_out_meas = 57 mA, U_in = 12V, I_in = 50 mA ==> efficiency 67%, P_dissipated = 198 mW\n4. load = Arduino Uno R3 w/ BLE and SIM808 Shield (on): U_out = 7V, I_out_meas = 70 mA, U_in = 12V, I_in = 55 mA ==> efficiency 74 %, P_dissipated = 172 mW, DT_meas = 4 degC
 Text Notes 7750 4600 0    50   ~ 0
 TIP120:\nDT_meas = 15.74 - 12.5 = 3.2 degC\nDU_horn = ? V (multimeter not able to read -> going to 1 when applying load). DU_CE = 0.7 V\nI_in_meas@12 V = ~1 A (oscillating fast)
@@ -1994,74 +1992,115 @@ Connection ~ 6000 3400
 $Comp
 L Device:CP1_Small C?
 U 1 1 5E576B05
-P 7250 10100
-F 0 "C?" V 7478 10100 50  0000 C CNN
-F 1 "220uF" V 7387 10100 50  0000 C CNN
-F 2 "" H 7250 10100 50  0001 C CNN
-F 3 "~" H 7250 10100 50  0001 C CNN
-	1    7250 10100
-	0    -1   -1   0   
+P 7250 8950
+F 0 "C?" V 7478 8950 50  0000 C CNN
+F 1 "220uF" V 7387 8950 50  0000 C CNN
+F 2 "" H 7250 8950 50  0001 C CNN
+F 3 "~" H 7250 8950 50  0001 C CNN
+	1    7250 8950
+	-1   0    0    1   
 $EndComp
-Text Notes 7200 10250 1    50   ~ 0
+Text Notes 7450 9000 2    50   ~ 0
 black
-Text Notes 7100 10250 1    50   ~ 0
+Text Notes 7450 9100 2    50   ~ 0
 red
-Text Notes 6900 10250 1    50   ~ 0
+Text Notes 7450 9300 2    50   ~ 0
 green
-Text Notes 6600 10250 1    50   ~ 0
+Text Notes 7450 9600 2    50   ~ 0
 orange
-Text Notes 6500 10250 1    50   ~ 0
+Text Notes 7450 9700 2    50   ~ 0
 yellow
-Text Notes 5800 10250 1    50   ~ 0
+Text Notes 7400 10400 2    50   ~ 0
 purple
-Text Notes 5700 10250 1    50   ~ 0
+Text Notes 7400 10500 2    50   ~ 0
 blue
 $Comp
 L Analog_Switch:CD4051B U?
 U 1 1 5E57C081
-P 6300 9400
-F 0 "U?" V 6346 10144 50  0000 L CNN
-F 1 "CD4050BE" V 6255 10144 50  0000 L CNN
-F 2 "" H 6450 8650 50  0001 L CNN
-F 3 "http://www.ti.com/lit/ds/symlink/cd4052b.pdf" H 6280 9500 50  0001 C CNN
-	1    6300 9400
-	0    1    -1   0   
+P 6100 9900
+F 0 "U?" V 6146 10644 50  0000 L CNN
+F 1 "CD4050BE" V 6055 10644 50  0000 L CNN
+F 2 "" H 6250 9150 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4052b.pdf" H 6080 10000 50  0001 C CNN
+	1    6100 9900
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	7100 9850 7100 9900
+	7000 9100 7050 9100
 Wire Wire Line
-	6700 9900 6700 10000
+	7150 9500 7150 9300
 Wire Wire Line
-	6700 10000 6900 10000
+	7150 9300 7400 9300
 Wire Wire Line
-	6900 10000 6900 10250
+	5600 10100 5550 10100
 Wire Wire Line
-	6100 8900 6100 8800
+	5550 10100 5550 8700
 Wire Wire Line
-	6100 8800 7500 8800
+	7050 8700 7050 9100
+Connection ~ 7050 9100
 Wire Wire Line
-	7500 8800 7500 9900
+	7050 9100 7250 9100
 Wire Wire Line
-	7500 9900 7100 9900
-Connection ~ 7100 9900
+	7400 9600 7150 9600
 Wire Wire Line
-	7100 9900 7100 10100
+	7150 9600 7150 10900
 Wire Wire Line
-	6600 10250 6600 10000
+	5550 10900 5550 10300
 Wire Wire Line
-	6600 10000 5300 10000
+	5550 10300 5600 10300
 Wire Wire Line
-	5300 10000 5300 8850
+	7400 9700 7200 9700
 Wire Wire Line
-	5300 8850 5900 8850
+	7200 9700 7200 10950
 Wire Wire Line
-	5900 8850 5900 8900
+	5600 10950 5600 10400
+$Comp
+L power:GND #PWR?
+U 1 1 5E47B91D
+P 6100 10750
+F 0 "#PWR?" H 6100 10500 50  0001 C CNN
+F 1 "GND" H 6105 10577 50  0000 C CNN
+F 2 "" H 6100 10750 50  0001 C CNN
+F 3 "" H 6100 10750 50  0001 C CNN
+	1    6100 10750
+	0    -1   -1   0   
+$EndComp
 Wire Wire Line
-	6500 10250 6500 10050
+	6100 10750 6100 10600
 Wire Wire Line
-	6500 10050 5250 10050
+	7400 10400 7300 10400
 Wire Wire Line
-	5250 10050 5250 8900
+	7300 10400 7300 9900
 Wire Wire Line
-	5250 8900 5800 8900
+	7400 10500 7250 10500
+Wire Wire Line
+	7250 10500 7250 11000
+Wire Wire Line
+	5500 9900 5600 9900
+Wire Wire Line
+	5500 11000 5500 9900
+Text GLabel 6700 9800 2    50   Output ~ 0
+A1_D13
+Wire Wire Line
+	5550 8700 7050 8700
+Wire Wire Line
+	6600 9500 7150 9500
+Wire Wire Line
+	6600 9900 7300 9900
+Wire Wire Line
+	5550 10900 7150 10900
+Wire Wire Line
+	5600 10950 7200 10950
+Wire Wire Line
+	5500 11000 7250 11000
+Wire Wire Line
+	6700 9800 6600 9800
+Wire Wire Line
+	5350 10200 5600 10200
+Wire Wire Line
+	6300 10600 6200 10600
+Wire Wire Line
+	6700 9600 6600 9600
+Wire Wire Line
+	5350 9800 5600 9800
 $EndSCHEMATC
