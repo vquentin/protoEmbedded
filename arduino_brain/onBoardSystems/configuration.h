@@ -12,11 +12,15 @@
 #define INPUT_SOFT_HORN_PIN 5
 #define INPUT_BRAKE_PIN 12
 #define INPUT_ECO_PIN 4
+#define INPUT_IND_LEFT_PIN 0
+#define INPUT_IND_RIGHT_PIN 1
 
 // output assignments
 #define OUTPUT_HORN_PIN 3 // connected to npn transistor HIGH is ON
 #define OUTPUT_BRAKE_PIN 6 // connected to npn transistor HIGH is ON
 #define OUTPUT_ECO_PIN 7 // connected to npn transistor HIGH is ON
+#define OUTPUT_IND_LEFT_PIN A3 // connected to npn transistor HIGH is ON
+#define OUTPUT_IND_RIGHT_PIN A2 // connected to npn transistor HIGH is ON
 
 // alarm tune for horn (police siren)
 #define ALARM_CYCLE_TIME 2800 // cycle time for upward pitch to downward pitch in ms

@@ -242,35 +242,3 @@ buttons_ecoMode_t read_buttons_ecoMode() {
   }
   return ECO_MODE_OFF;
 }
-
-/*
-  // light state machine implementation
-  void state_machine_run_light(uint8_t sensors_light) {
-  switch (state_light) {
-    case OFF_LIGHT:
-      if (sensors_light != NO_PUSH_BUTTON_LIGHT) {
-        on_light();
-        state_light = ON_LIGHT ;
-      }
-      break;
-    case ON_LIGHT:
-      if (sensors_light != PUSH_BUTTON_LIGHT) {
-        off_light();
-        state_light = OFF_LIGHT ;
-      }
-      break;
-  }
-  }
-
-  void on_light() {
-  digitalWrite(output_light, HIGH);
-
-  }
-  void off_light() {
-  digitalWrite(output_light, LOW);
-  }
-
-  uint8_t read_button_light() {
-  return debounce.pin(input_light); // or PUSH_BUTTON_LIGHT
-  }
-*/
