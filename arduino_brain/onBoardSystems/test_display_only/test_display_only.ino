@@ -32,6 +32,16 @@ All text above, and the splash screen below must be included in any redistributi
 // Used for I2C or SPI
 #define OLED_RESET 9
 
+// battery-drawing parameters
+#define BATTERY_IND_HEIGHT 40
+#define BATTERY_IND_WIDTH 20
+#define BATTERY_IND_POS_X 106
+#define BATTERY_IND_POS_Y 9
+#define BATTERY_IND_CAP_HEIGHT 5
+#define BATTERY_IND_CAP_WIDTH 10
+#define BATTERY_IND_N 5 // number of rectangles to draw
+#define BATTERY_IND_N_SPACE 2 // margin around the battery capacity indicators
+
 // software SPI
 Adafruit_SSD1305 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 // hardware SPI
@@ -105,37 +115,10 @@ void setup()   {
   //display.clearDisplay();
   //display.display();
 
-// battery-drawing parameters
-#define BATTERY_IND_HEIGHT 40
-#define BATTERY_IND_WIDTH 20
-#define BATTERY_IND_POS_X 106
-#define BATTERY_IND_POS_Y 20
-#define BATTERY_IND_CAP_HEIGHT 5
-#define BATTERY_IND_CAP_WIDTH 10
-#define BATTERY_IND_N 5
-#define BATTERY_IND_N_SPACE 2 
 
-/* draws the battery indicator on the display
- *  c is the remaining charge in percent
- */
-void drawBattery(uint8_t c){
-  // display the outline of the battery indicator
-  display.drawFastHLine(106,60,21,WHITE);
-  display.drawFastVLine( 106, 20, 40, WHITE);
-  display.drawFastVLine( 126, 20, 40, WHITE);
-  
-  display.drawFastVLine(111,15,6,WHITE);
-  display.drawFastVLine(121,15,6,WHITE);
-  display.drawFastHLine(111,15,10,WHITE);
-  display.drawFastHLine(106,20,5,WHITE);
-  display.drawFastHLine(121,20,5,WHITE);
 
-  //display rectangles that indicate charge left
-  
-  
-  display.display();
-}
 
+/*
 // Battery indicator
   display.drawFastVLine( 126, 20, 40, WHITE);
   display.drawFastVLine( 106, 20, 40, WHITE);
@@ -145,9 +128,9 @@ void drawBattery(uint8_t c){
   display.drawFastHLine(111,15,10,WHITE);
   display.drawFastHLine(106,20,5,WHITE);
   display.drawFastHLine(121,20,5,WHITE);
-  
+  */
+  drawBattery(50);
   display.display();
-  
   
 /*
   // draw many lines
@@ -404,4 +387,23 @@ void testdrawline() {
     display.display();
   }
   delay(250);
+}
+
+/* draws the battery indicator on the display
+ *  c is the remaining charge in percent
+ */
+void drawBattery(uint8_t c){
+  // display the outline of the battery indicator
+  display.drawFastHLine(BATTERY_IND_POS_X,BATTERY_IND_POS_Y+BATTERY_IND_HEIGHT,BATTERY_IND_WIDTH+1,WHITE); // bottom line
+  display.drawFastVLine(BATTERY_IND_POS_X, BATTERY_IND_POS_Y, BATTERY_IND_HEIGHT, WHITE); // first main vertical line
+  display.drawFastVLine(BATTERY_IND_POS_X+BATTERY_IND_WIDTH, BATTERY_IND_POS_Y, BATTERY_IND_HEIGHT, WHITE); // second main vertical line
+  display.drawFastVLine(BATTERY_IND_POS_X+(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2,BATTERY_IND_POS_Y-BATTERY_IND_CAP_HEIGHT,BATTERY_IND_CAP_HEIGHT+1,WHITE); // cap
+  display.drawFastVLine(BATTERY_IND_POS_X+(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2+BATTERY_IND_CAP_WIDTH,BATTERY_IND_POS_Y-BATTERY_IND_CAP_HEIGHT,BATTERY_IND_CAP_HEIGHT+1,WHITE); // cap
+  display.drawFastHLine(BATTERY_IND_POS_X+(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2,BATTERY_IND_POS_Y-BATTERY_IND_CAP_HEIGHT,BATTERY_IND_CAP_WIDTH,WHITE); // cap top
+  display.drawFastHLine(BATTERY_IND_POS_X,BATTERY_IND_POS_Y,(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2,WHITE); // cap- cylinder join
+  display.drawFastHLine(BATTERY_IND_POS_X+BATTERY_IND_CAP_WIDTH+(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2,BATTERY_IND_POS_Y,(BATTERY_IND_WIDTH-BATTERY_IND_CAP_WIDTH)/2,WHITE); // cap-cylinder join 
+
+  //display rectangles that indicate charge left
+  //TODO
+  
 }
