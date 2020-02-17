@@ -27,6 +27,16 @@ void on_brakeLight();
 // readings
 buttons_brake_t read_buttons_brake();
 
+// eco mode state machine declarations
+enum state_ecoMode_t {ECO_OFF, ECO_ON};
+enum buttons_ecoMode_t {ECO_MODE_ON, ECO_MODE_OFF};
+void state_machine_ecoMode();
+//actions
+void off_ecoMode();
+void on_ecoMode();
+// readings
+buttons_ecoMode_t read_buttons_ecoMode();
+
 // horn state machine declarations
 enum state_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
 enum buttons_horn_t {HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH};
@@ -45,17 +55,20 @@ buttons_horn_t read_buttons_horn();
 alarm_states_t state_alarm = ALARM_INACTIVE;
 //alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 state_brake_t state_brake = BRAKE_OFF ; // brake FSM initialization
+state_ecoMode_t state_ecoMode = ECO_OFF ; // eco-mode FSM initialization
 state_horn_t state_horn = HORN_OFF ; // horn FSM initialization
 
 void setup() {
   pinMode(INPUT_HORN_PIN, INPUT);
   pinMode(INPUT_SOFT_HORN_PIN, INPUT);
   pinMode(INPUT_BRAKE_PIN, INPUT);
+  pinMode(INPUT_ECO_PIN, INPUT);
 
   pinMode(OUTPUT_HORN_PIN, OUTPUT);
   pinMode(OUTPUT_BRAKE_PIN, OUTPUT);
+  pinMode(OUTPUT_ECO_PIN, OUTPUT);
 
-  // hard-coded variables
+  // hard-coded variables in EEPROM
   // wheel diameter
   // shunt resistor value
   // odometer reading
@@ -65,6 +78,7 @@ void setup() {
 void loop() {
   state_machine_horn();
   state_machine_brake();
+  state_machine_eco();
   delay(10);
 }
 
@@ -81,6 +95,24 @@ void state_machine_brake(){
       if (read_buttons_brake() != BRAKE_LEVER_ON) {
         off_brakeLight();
         state_brake = BRAKE_OFF ;
+      }
+      break;
+  }
+}
+
+// eco mode state machine implementation
+void state_machine_eco(){
+  switch(state_ecoMode){
+    case ECO_OFF:
+      if(read_buttons_ecoMode() != ECO_MODE_OFF){
+        on_ecoMode();
+        state_ecoMode = ECO_ON ;
+      }
+      break;
+    case ECO_ON:
+      if(read_buttons_ecoMode() != ECO_MODE_ON){
+        off_ecoMode();
+        state_ecoMode = ECO_OFF ;
       }
       break;
   }
@@ -177,6 +209,13 @@ void off_brakeLight() {
   digitalWrite(OUTPUT_BRAKE_PIN, LOW);
 }
 
+void on_ecoMode() {
+  digitalWrite(OUTPUT_ECO_PIN, HIGH);
+}
+void off_ecoMode() {
+  digitalWrite(OUTPUT_ECO_PIN, LOW);
+}
+
 // buttons are active only if the Yoda can be active
 buttons_horn_t read_buttons_horn() {
   if (ALARM_INACTIVE && debounce.pin(INPUT_HORN_PIN) == LOW) {
@@ -194,6 +233,14 @@ buttons_brake_t read_buttons_brake() {
     return BRAKE_LEVER_ON ;
   }
   return BRAKE_LEVER_OFF;
+}
+
+// buttons are active only if the Yoda can be active
+buttons_ecoMode_t read_buttons_ecoMode() {
+  if (ALARM_INACTIVE && debounce.pin(INPUT_ECO_PIN) == LOW ) {
+    return ECO_MODE_ON ;
+  }
+  return ECO_MODE_OFF;
 }
 
 /*
