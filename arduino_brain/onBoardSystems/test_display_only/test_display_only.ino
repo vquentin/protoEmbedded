@@ -46,6 +46,28 @@ All text above, and the splash screen below must be included in any redistributi
 #define SCREEN_ODO_X 10
 #define SCREEN_ODO_Y 55
 
+#define SCREEN_ECO_X 70
+#define SCREEN_ECO_Y 8
+
+#define SCREEN_ECO_SIZE 16
+static const unsigned char PROGMEM logo16_eco_bmp[] =
+{ B00000000, B11000000,
+  B00000001, B11000000,
+  B00000001, B11000000,
+  B00000011, B11100000,
+  B11110011, B11100000,
+  B11111110, B11111000,
+  B01111110, B11111111,
+  B00110011, B10011111,
+  B00011111, B11111100,
+  B00001101, B01110000,
+  B00011011, B10100000,
+  B00111111, B11100000,
+  B00111111, B11110000,
+  B01111100, B11110000,
+  B01110000, B01110000,
+  B00000000, B00110000 };
+
 // software SPI
 Adafruit_SSD1305 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 // hardware SPI
@@ -75,6 +97,7 @@ void loop() {
     drawOdometer(325743);
     drawTripMeter(13); // distance in hectometers
     drawBatteryDist(24);
+    drawEcoSymbol(logo16_eco_bmp, SCREEN_ECO_SIZE, SCREEN_ECO_SIZE);
     display.display();
     delay(100);
   }
@@ -160,4 +183,12 @@ void drawBatteryDist(uint8_t d){
   display.setTextWrap(false);
   display.print(d);
   display.print("km");
+}
+
+/* draws the eco mode symbol on the display
+ *  bitmap is the pointer to a PROGMEM bitmap
+ *  
+ */
+void drawEcoSymbol(const uint8_t *bitmap, uint8_t w, uint8_t h) {
+  display.drawBitmap(SCREEN_ECO_X, SCREEN_ECO_Y,  logo16_eco_bmp, w, h, WHITE);
 }

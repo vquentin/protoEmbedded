@@ -1517,8 +1517,6 @@ Text Notes 5100 6700 2    50   ~ 0
 commodo
 Text Notes 5100 6900 2    50   ~ 0
 commodo
-Text Notes 5050 7700 2    50   ~ 0
-brakes
 Text Notes -2350 5650 2    50   ~ 0
 speed
 Text GLabel 900  4150 0    50   Output ~ 0
@@ -2103,4 +2101,6 @@ Wire Wire Line
 	6700 9600 6600 9600
 Wire Wire Line
 	5350 9800 5600 9800
+Text Notes 5050 7700 2    50   ~ 0
+brakes
 $EndSCHEMATC

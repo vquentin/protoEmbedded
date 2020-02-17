@@ -1517,7 +1517,7 @@ Text Notes 5100 6700 2    50   ~ 0
 commodo
 Text Notes 5100 6900 2    50   ~ 0
 commodo
-Text Notes 5050 7700 2    50   ~ 0
+Text Notes 7500 7200 2    50   ~ 0
 brakes
 Text Notes -2350 5650 2    50   ~ 0
 speed
@@ -2000,19 +2000,19 @@ F 3 "~" H 7250 8950 50  0001 C CNN
 	1    7250 8950
 	-1   0    0    1   
 $EndComp
-Text Notes 7400 9050 2    50   ~ 0
+Text Notes 7450 9000 2    50   ~ 0
 black
-Text Notes 7400 9150 2    50   ~ 0
+Text Notes 7450 9100 2    50   ~ 0
 red
-Text Notes 7400 9350 2    50   ~ 0
+Text Notes 7450 9300 2    50   ~ 0
 green
-Text Notes 7400 9650 2    50   ~ 0
+Text Notes 7450 9600 2    50   ~ 0
 orange
-Text Notes 7400 9750 2    50   ~ 0
+Text Notes 7450 9700 2    50   ~ 0
 yellow
-Text Notes 7400 10450 2    50   ~ 0
+Text Notes 7400 10400 2    50   ~ 0
 purple
-Text Notes 7400 10550 2    50   ~ 0
+Text Notes 7400 10500 2    50   ~ 0
 blue
 $Comp
 L Analog_Switch:CD4051B U?

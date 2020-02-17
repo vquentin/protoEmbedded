@@ -10,10 +10,22 @@
 #include "musics.h" //file including the different melodies
 #include "utils.h" // file including utility functions
 
+#include <EEPROM.h> // to manage hard-coded variables like wheel diameter, odometer etc.
+
 EdgeDebounceLite debounce ;
 
 // alarm state machine declarations
-enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE};
+enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE, ALARM_WATCH};
+
+// brake state machine declarations
+enum state_brake_t {BRAKE_OFF, BRAKE_ON};
+enum buttons_brake_t {BRAKE_LEVER_ON,BRAKE_LEVER_OFF};
+void state_machine_brake();
+// actions
+void off_brakeLight();
+void on_brakeLight();
+// readings
+buttons_brake_t read_buttons_brake();
 
 // horn state machine declarations
 enum state_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
@@ -30,8 +42,9 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
 buttons_horn_t read_buttons_horn();
 
 // initialization of FSMs
-//alarm_states_t state_alarm = ALARM_INACTIVE;
-alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
+alarm_states_t state_alarm = ALARM_INACTIVE;
+//alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
+state_brake_t state_brake = BRAKE_OFF ; // brake FSM initialization
 state_horn_t state_horn = HORN_OFF ; // horn FSM initialization
 
 void setup() {
@@ -41,11 +54,36 @@ void setup() {
 
   pinMode(OUTPUT_HORN_PIN, OUTPUT);
   pinMode(OUTPUT_BRAKE_PIN, OUTPUT);
+
+  // hard-coded variables
+  // wheel diameter
+  // shunt resistor value
+  // odometer reading
+  
 }
 
 void loop() {
   state_machine_horn();
+  state_machine_brake();
   delay(10);
+}
+
+// brake state machine implementation
+void state_machine_brake(){
+  switch (state_brake){
+    case BRAKE_OFF:
+      if (read_buttons_brake() != BRAKE_LEVER_OFF) {
+        on_brakeLight();
+        state_brake = BRAKE_ON ;
+      }
+      break;
+    case BRAKE_ON:
+      if (read_buttons_brake() != BRAKE_LEVER_ON) {
+        off_brakeLight();
+        state_brake = BRAKE_OFF ;
+      }
+      break;
+  }
 }
 
 // horn state machine implementation
@@ -87,7 +125,7 @@ void state_machine_horn() {
       }
       break;
     case HORN_ALARM:
-      if (state_alarm == ALARM_INACTIVE) {
+      if (state_alarm != ALARM_ACTIVE) {
         off_horn();
         state_horn = HORN_OFF ;
       }
@@ -132,17 +170,31 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
   return true;
 }
 
+void on_brakeLight() {
+  digitalWrite(OUTPUT_BRAKE_PIN, HIGH);
+}
+void off_brakeLight() {
+  digitalWrite(OUTPUT_BRAKE_PIN, LOW);
+}
+
+// buttons are active only if the Yoda can be active
 buttons_horn_t read_buttons_horn() {
-  if (debounce.pin(INPUT_HORN_PIN) == LOW) {
+  if (ALARM_INACTIVE && debounce.pin(INPUT_HORN_PIN) == LOW) {
     return HORN_PUSH_MAIN ;
   }
-  else if (debounce.pin(INPUT_SOFT_HORN_PIN) == LOW) {
+  else if (ALARM_INACTIVE && debounce.pin(INPUT_SOFT_HORN_PIN) == LOW) {
     return HORN_PUSH_SOFT ;
   }
     return HORN_NO_PUSH;
 }
 
-
+// buttons are active only if the Yoda can be active
+buttons_brake_t read_buttons_brake() {
+  if (ALARM_INACTIVE && debounce.pin(INPUT_BRAKE_PIN) == LOW ) {
+    return BRAKE_LEVER_ON ;
+  }
+  return BRAKE_LEVER_OFF;
+}
 
 /*
   // light state machine implementation
