@@ -147,9 +147,9 @@ void drawSpeed(uint8_t s) {
 void drawOdometer(unsigned long d) {
   display.setCursor(SCREEN_ODO_X, SCREEN_ODO_Y);
   display.setTextColor(WHITE);
-  display.print("Tot. ");
+  display.print(F("Tot. "));
   display.print(d);
-  display.print(" km");
+  display.print(F(" km"));
 }
 
 /* draws the tripmeter (trip distance) on the display
@@ -160,11 +160,11 @@ void drawOdometer(unsigned long d) {
 void drawTripMeter(uint16_t d) {
   display.setCursor(SCREEN_ODO_X, SCREEN_ODO_Y - 9);
   display.setTextColor(WHITE);
-  display.print("Trip ");
+  display.print(F("Trip "));
   display.print(d / 10);
-  display.print(".");
+  display.print(F("."));
   display.print(d % 10);
-  display.print(" km");
+  display.print(F(" km"));
 }
 
 /* draws the remaining battery (distance) on the display
@@ -175,7 +175,7 @@ void drawBatteryDist(uint8_t d) {
   display.setTextColor(WHITE);
   display.setTextWrap(false);
   display.print(d);
-  display.print("km");
+  display.print(F("km"));
 }
 
 /* draws the eco mode symbol on the display
@@ -193,7 +193,7 @@ void drawAlert(){
   display.setCursor(20, 20);
   display.setTextColor(WHITE);
   display.setTextWrap(false);
-  display.println("Alarm active");
-  display.println("Police is on the way");
-  display.print("Owner alerted");
+  display.println(F("Alarm active"));
+  display.println(F("Police is on the way"));
+  display.print(F("Owner alerted"));
 }

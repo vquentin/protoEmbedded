@@ -736,15 +736,15 @@ red
 Text Notes 1500 7000 0    50   ~ 0
 black
 Text Notes 1500 7300 0    50   ~ 0
-grey
+grey/F4/grey
 Text Notes 1750 2400 0    50   ~ 0
 (4) Blue
 Text Notes 1750 2600 0    50   ~ 0
 (2) Black
 Text Notes 1400 2350 0    50   ~ 0
-blue
+blue/F3/purple
 Text Notes 1400 2650 0    50   ~ 0
-red
+red/F2/black
 Text GLabel 1650 2150 2    50   Input ~ 0
 A1_A1
 Wire Wire Line
@@ -2101,4 +2101,10 @@ Wire Wire Line
 	5350 9800 5600 9800
 Text Notes 7550 7200 2    50   ~ 0
 brakes
+Text Notes 1300 1500 0    50   ~ 0
+F2/black
+Text Notes 1300 1300 0    50   ~ 0
+F5/red
+Text Notes 1300 1700 0    50   ~ 0
+F1/white
 $EndSCHEMATC

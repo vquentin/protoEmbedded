@@ -59,7 +59,8 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
 buttons_horn_t read_buttons_horn();
 
 // initialization of FSMs
-alarm_states_t state_alarm = ALARM_WATCH;
+//alarm_states_t state_alarm = ALARM_WATCH;
+alarm_states_t state_alarm = ALARM_INACTIVE;
 //alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 state_brake_t state_brake = BRAKE_OFF ; // brake FSM initialization
 state_ecoMode_t state_ecoMode = ECO_OFF ; // eco-mode FSM initialization
@@ -364,7 +365,7 @@ void on_left_right_ind(unsigned long milliseconds_start,unsigned long millisecon
 
 // buttons are active only if the Yoda can be active
 buttons_horn_t read_buttons_horn() {
-  if (ALARM_INACTIVE && debounce.pin(INPUT_HORN_PIN) == LOW) {
+  if (state_alarm==ALARM_INACTIVE && debounce.pin(INPUT_HORN_PIN) == LOW) {
     return HORN_PUSH_MAIN ;
   }
   else if (ALARM_INACTIVE && debounce.pin(INPUT_SOFT_HORN_PIN) == LOW) {
@@ -375,7 +376,7 @@ buttons_horn_t read_buttons_horn() {
 
 // buttons are active only if the Yoda can be active
 buttons_brake_t read_buttons_brake() {
-  if (ALARM_INACTIVE && debounce.pin(INPUT_BRAKE_PIN) == LOW ) {
+  if (state_alarm==ALARM_INACTIVE && debounce.pin(INPUT_BRAKE_PIN) == LOW ) {
     return BRAKE_LEVER_ON ;
   }
   return BRAKE_LEVER_OFF;
@@ -383,7 +384,7 @@ buttons_brake_t read_buttons_brake() {
 
 // buttons are active only if the Yoda can be active
 buttons_ecoMode_t read_buttons_ecoMode() {
-  if (ALARM_INACTIVE && debounce.pin(INPUT_ECO_PIN) == LOW ) {
+  if (state_alarm==ALARM_INACTIVE && debounce.pin(INPUT_ECO_PIN) == LOW ) {
     return ECO_MODE_ON ;
   }
   return ECO_MODE_OFF;
@@ -391,10 +392,10 @@ buttons_ecoMode_t read_buttons_ecoMode() {
 
 // buttons are active only if the Yoda can be active
 buttons_ind_t read_buttons_ind() {
-  if (ALARM_INACTIVE && debounce.pin(INPUT_IND_LEFT_PIN) == LOW ) {
+  if (state_alarm==ALARM_INACTIVE && debounce.pin(INPUT_IND_LEFT_PIN) == LOW ) {
     return IND_LEFT_ON ;
   }
-  else if(ALARM_INACTIVE && debounce.pin(INPUT_IND_RIGHT_PIN) == LOW ) {
+  else if(state_alarm==ALARM_INACTIVE && debounce.pin(INPUT_IND_RIGHT_PIN) == LOW ) {
     return IND_RIGHT_ON ;
   }
   return IND_LEFT_RIGHT_OFF;
