@@ -2,26 +2,20 @@
    Author: Quentin Van Overmeere, YodaCity SRL
    E-mail: quentin@yoda-city.com
    Copyright YodaCity 2020
-   Controls the Arduino Uno R3 Board that is hooked up to OLED screen, horn, lamps and other on-board controls
+   Controls the Slave Arduino Uno R3 Board that is hooked up to OLED screen, horn, lamps and other on-board controls
+   The Master Arduino Uno R3 has the connections to BLE, SIM card and on/off control
 */
 
 #include "configuration.h" // the file containing all configuration variables
 #include "EdgeDebounceLite.h" // j-bellavance debounce function under GNU license
 #include "musics.h" //file including the different melodies
 #include "utils.h" // file including utility functions
+#include "sharedI2CMsg.h" // declarations shared between two Arduinos, master and slave
 
 #include <EEPROM.h> // to manage hard-coded variables like wheel diameter, odometer etc.
 #include <Wire.h> // to receive data from master on the I2C bus: speed, alarm state, trip distance, odometer distance
 
 EdgeDebounceLite debounce ;
-
-//i2c messages values - CAREFUL these lines MUST be sync between master and slave ! which is why enum values are assigned
-enum i2c_messages_t {I2C_SPEED=1, I2C_ALARM=2};
-uint8_t speedR = 0;
-// alarm state machine declarations
-enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE, ALARM_WATCH};
-
-//end of i2c shared values and types
 
 // brake state machine declarations
 enum state_brake_t {BRAKE_OFF, BRAKE_ON};
@@ -95,9 +89,8 @@ void setup() {
   Wire.begin(SLAVE_I2C_ADDRESS); 
   Wire.onReceive(receiveI2CHandler); // register event handler
   // hard-coded variables in EEPROM
-  // wheel diameter
   // shunt resistor value
-  // odometer reading  
+  // odometer/trip/speed/battery readings? assumes the arduino will not be on when riding?
 }
 
 void loop() {
@@ -110,13 +103,35 @@ void loop() {
 
 //I2C event handler
 void receiveI2CHandler(int numBytes){
-  i2c_messages_t msg_i2c = Wire.read(); // receive byte message
+  i2c_messages_t msg_i2c = Wire.read(); // receive byte as a i2c_messages_t type (cast OK since less than 255 values)
   switch(msg_i2c){
     case I2C_SPEED:
-      speedR = Wire.read();    // receive byte as a uint8_t ;
+      if(numBytes-1 == sizeof(speedR)){
+        speedR = Wire.read();    // receive byte as a uint8_t
+      }
       break;
     case I2C_ALARM:
-      state_alarm = Wire.read(); // receive byte as a alarm_states_t type
+      state_alarm = Wire.read(); // receive byte as a alarm_states_t type (cast OK since less than 255 values)
+      break;
+    case I2C_ODO:
+      if (numBytes-1 == sizeof(odoR)){
+        Wire.readBytes((byte*)&odoR,sizeof(odoR)); // receive byte as a unsigned long
+      }
+      break;
+    case I2C_TRIP:
+      if(numBytes-1 == sizeof(tripR)){
+        Wire.readBytes((byte*)&tripR,sizeof(tripR));    // receive byte as a uint16_t - TODO: bit-wise ops
+      }
+      break;
+    case I2C_BATTERY_CHARGE:
+      if(numBytes-1 == sizeof(batteryChargeR)){
+        batteryChargeR = Wire.read();    // receive byte as a uint8_t
+      }
+      break;
+    case I2C_BATTERY_KM:
+      if(numBytes-1 == sizeof(batteryKmR)){
+        batteryKmR = Wire.read();    // receive byte as a uint8_t
+      }
       break;
   }
 }

@@ -7,9 +7,6 @@
 
 //#define DEBUG
 
-// I2C parameters
-#define SLAVE_I2C_ADDRESS 9 // other addresses used are?
-
  // input assignments. All pull low when buttons are pressed
 #define INPUT_HORN_PIN  2
 #define INPUT_SOFT_HORN_PIN 5
