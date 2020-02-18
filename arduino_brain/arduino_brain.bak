@@ -746,7 +746,7 @@ blue
 Text Notes 1400 2650 0    50   ~ 0
 red
 Text GLabel 1650 2150 2    50   Input ~ 0
-A1_D12
+A1_A1
 Wire Wire Line
 	1300 2650 1350 2650
 $Comp
@@ -1517,16 +1517,12 @@ Text Notes 5100 6700 2    50   ~ 0
 commodo
 Text Notes 5100 6900 2    50   ~ 0
 commodo
-Text Notes 7500 7200 2    50   ~ 0
-brakes
 Text Notes -2350 5650 2    50   ~ 0
 speed
 Text GLabel 900  4150 0    50   Output ~ 0
 A1_D7
 Text Notes 5100 7200 2    50   ~ 0
 eco
-Text Notes 7800 7850 2    50   ~ 0
-shunt/Other Arduino
 Text Notes 8050 7600 2    50   ~ 0
 shunt/Other Arduino
 Text Notes -1800 4250 2    50   ~ 0
@@ -2103,4 +2099,6 @@ Wire Wire Line
 	6700 9600 6600 9600
 Wire Wire Line
 	5350 9800 5600 9800
+Text Notes 7550 7200 2    50   ~ 0
+brakes
 $EndSCHEMATC

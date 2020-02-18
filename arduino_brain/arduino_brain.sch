@@ -746,7 +746,7 @@ blue
 Text Notes 1400 2650 0    50   ~ 0
 red
 Text GLabel 1650 2150 2    50   Input ~ 0
-A1_D12
+A1_A1
 Wire Wire Line
 	1300 2650 1350 2650
 $Comp
@@ -1523,8 +1523,6 @@ Text GLabel 900  4150 0    50   Output ~ 0
 A1_D7
 Text Notes 5100 7200 2    50   ~ 0
 eco
-Text Notes 7800 7850 2    50   ~ 0
-shunt/Other Arduino
 Text Notes 8050 7600 2    50   ~ 0
 shunt/Other Arduino
 Text Notes -1800 4250 2    50   ~ 0
@@ -1687,7 +1685,7 @@ Wire Wire Line
 Text Notes 7950 2300 0    50   ~ 0
 V_brake = 11.78 V —> P_dis = 0.22*0.1 = 22 mW —> DT_theo = 3.5 degC
 Text Notes 7300 7100 0    50   ~ 0
-thermistor
+(thermistor)
 $Comp
 L Device:R_Small R?
 U 1 1 5E43CFA1
@@ -2101,6 +2099,6 @@ Wire Wire Line
 	6700 9600 6600 9600
 Wire Wire Line
 	5350 9800 5600 9800
-Text Notes 5050 7700 2    50   ~ 0
+Text Notes 7550 7200 2    50   ~ 0
 brakes
 $EndSCHEMATC

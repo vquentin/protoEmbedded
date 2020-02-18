@@ -11,11 +11,17 @@
 #include "utils.h" // file including utility functions
 
 #include <EEPROM.h> // to manage hard-coded variables like wheel diameter, odometer etc.
+#include <Wire.h> // to receive data from master on the I2C bus: speed, alarm state, trip distance, odometer distance
 
 EdgeDebounceLite debounce ;
 
+//i2c messages values - CAREFUL these lines MUST be sync between master and slave ! which is why enum values are assigned
+enum i2c_messages_t {I2C_SPEED=1, I2C_ALARM=2};
+uint8_t speedR = 0;
 // alarm state machine declarations
 enum alarm_states_t {ALARM_INACTIVE, ALARM_ACTIVE, ALARM_WATCH};
+
+//end of i2c shared values and types
 
 // brake state machine declarations
 enum state_brake_t {BRAKE_OFF, BRAKE_ON};
@@ -37,6 +43,19 @@ void on_ecoMode();
 // readings
 buttons_ecoMode_t read_buttons_ecoMode();
 
+// indicators state machine declarations
+enum state_ind_t {IND_OFF, L_IND_ON, R_IND_ON, L_R_IND_ON};
+enum buttons_ind_t {IND_LEFT_ON, IND_RIGHT_ON, IND_LEFT_RIGHT_OFF};
+unsigned long time_start_ind = 0 ;
+void state_machine_ind();
+//actions
+void off_ind();
+void on_left_ind(unsigned long milliseconds_start, unsigned long milliseconds_current);
+void on_right_ind(unsigned long milliseconds_start, unsigned long milliseconds_current);
+void on_left_right_ind(unsigned long milliseconds_start, unsigned long milliseconds_current);
+//readings
+buttons_ind_t read_buttons_ind();
+
 // horn state machine declarations
 enum state_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
 enum buttons_horn_t {HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH};
@@ -56,6 +75,7 @@ alarm_states_t state_alarm = ALARM_INACTIVE;
 //alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 state_brake_t state_brake = BRAKE_OFF ; // brake FSM initialization
 state_ecoMode_t state_ecoMode = ECO_OFF ; // eco-mode FSM initialization
+state_ind_t state_ind = IND_OFF ; // indicators FSM initialization
 state_horn_t state_horn = HORN_OFF ; // horn FSM initialization
 
 void setup() {
@@ -63,23 +83,42 @@ void setup() {
   pinMode(INPUT_SOFT_HORN_PIN, INPUT);
   pinMode(INPUT_BRAKE_PIN, INPUT);
   pinMode(INPUT_ECO_PIN, INPUT);
+  pinMode(INPUT_IND_LEFT_PIN, INPUT);
+  pinMode(INPUT_IND_RIGHT_PIN, INPUT);
 
   pinMode(OUTPUT_HORN_PIN, OUTPUT);
   pinMode(OUTPUT_BRAKE_PIN, OUTPUT);
   pinMode(OUTPUT_ECO_PIN, OUTPUT);
+  pinMode(OUTPUT_IND_LEFT_PIN, OUTPUT);
+  pinMode(OUTPUT_IND_RIGHT_PIN, OUTPUT);
 
+  Wire.begin(SLAVE_I2C_ADDRESS); 
+  Wire.onReceive(receiveI2CHandler); // register event handler
   // hard-coded variables in EEPROM
   // wheel diameter
   // shunt resistor value
-  // odometer reading
-  
+  // odometer reading  
 }
 
 void loop() {
   state_machine_horn();
   state_machine_brake();
   state_machine_eco();
+  state_machine_ind();
   delay(10);
+}
+
+//I2C event handler
+void receiveI2CHandler(int numBytes){
+  i2c_messages_t msg_i2c = Wire.read(); // receive byte message
+  switch(msg_i2c){
+    case I2C_SPEED:
+      speedR = Wire.read();    // receive byte as a uint8_t ;
+      break;
+    case I2C_ALARM:
+      state_alarm = Wire.read(); // receive byte as a alarm_states_t type
+      break;
+  }
 }
 
 // brake state machine implementation
@@ -113,6 +152,60 @@ void state_machine_eco(){
       if(read_buttons_ecoMode() != ECO_MODE_ON){
         off_ecoMode();
         state_ecoMode = ECO_OFF ;
+      }
+      break;
+  }
+}
+
+// indicators state machine implementation
+void state_machine_ind() {
+  switch (state_ind) {
+    case IND_OFF:
+      switch (read_buttons_ind()) {
+        case IND_LEFT_ON:
+          time_start_ind = millis();
+          on_left_ind(time_start_ind,millis());
+          state_ind = L_IND_ON ;
+          break;
+        case IND_RIGHT_ON:
+          time_start_ind = millis();
+          on_right_ind(time_start_ind,millis());
+          state_ind = R_IND_ON ;
+          break;
+        case IND_LEFT_RIGHT_OFF:
+          if(state_alarm==ALARM_ACTIVE){
+            time_start_ind = millis();
+            on_left_right_ind(time_start_ind,millis());
+            state_ind = L_R_IND_ON ;
+          }
+          break;
+      }
+      break;
+    case L_IND_ON:
+      if (read_buttons_ind() != IND_LEFT_ON) {
+        off_ind();
+        state_ind = IND_OFF ;
+      }
+      else{
+        on_left_ind(time_start_ind,millis());
+      }
+      break;
+    case R_IND_ON:
+      if (read_buttons_ind() != IND_RIGHT_ON) {
+        off_ind();
+        state_ind = IND_OFF ;
+      }
+      else{
+        on_right_ind(time_start_ind,millis());
+      }
+      break;
+    case L_R_IND_ON:
+      if (state_alarm != ALARM_ACTIVE) {
+        off_ind();
+        state_ind = IND_OFF ;
+      }
+      else{
+        on_left_right_ind(time_start_ind,millis()) ;
       }
       break;
   }
@@ -216,6 +309,40 @@ void off_ecoMode() {
   digitalWrite(OUTPUT_ECO_PIN, LOW);
 }
 
+void off_ind() {
+  digitalWrite(OUTPUT_IND_LEFT_PIN,LOW);
+  digitalWrite(OUTPUT_IND_RIGHT_PIN,LOW);
+}
+
+void on_left_ind(unsigned long milliseconds_start,unsigned long milliseconds_current) {
+  if((milliseconds_current-milliseconds_start)%INDICATOR_CYCLE_TIME < INDICATOR_CYCLE_TIME_ON){
+    digitalWrite(OUTPUT_IND_LEFT_PIN,HIGH);
+  }
+  else{
+    digitalWrite(OUTPUT_IND_LEFT_PIN,LOW);
+  }
+}
+
+void on_right_ind(unsigned long milliseconds_start,unsigned long milliseconds_current) {
+  if((milliseconds_current-milliseconds_start)%INDICATOR_CYCLE_TIME < INDICATOR_CYCLE_TIME_ON){
+    digitalWrite(OUTPUT_IND_RIGHT_PIN,HIGH);
+  }
+  else{
+    digitalWrite(OUTPUT_IND_RIGHT_PIN,LOW);
+  }
+}
+
+void on_left_right_ind(unsigned long milliseconds_start,unsigned long milliseconds_current) {
+  if((milliseconds_current-milliseconds_start)%INDICATOR_CYCLE_TIME < INDICATOR_CYCLE_TIME_ON){
+    digitalWrite(OUTPUT_IND_LEFT_PIN,HIGH);
+    digitalWrite(OUTPUT_IND_RIGHT_PIN,HIGH);
+  }
+  else{
+    digitalWrite(OUTPUT_IND_LEFT_PIN,LOW);
+    digitalWrite(OUTPUT_IND_RIGHT_PIN,LOW);
+  }
+}
+
 // buttons are active only if the Yoda can be active
 buttons_horn_t read_buttons_horn() {
   if (ALARM_INACTIVE && debounce.pin(INPUT_HORN_PIN) == LOW) {
@@ -241,4 +368,15 @@ buttons_ecoMode_t read_buttons_ecoMode() {
     return ECO_MODE_ON ;
   }
   return ECO_MODE_OFF;
+}
+
+// buttons are active only if the Yoda can be active
+buttons_ind_t read_buttons_ind() {
+  if (ALARM_INACTIVE && debounce.pin(INPUT_IND_LEFT_PIN) == LOW ) {
+    return IND_LEFT_ON ;
+  }
+  else if(ALARM_INACTIVE && debounce.pin(INPUT_IND_RIGHT_PIN) == LOW ) {
+    return IND_RIGHT_ON ;
+  }
+  return IND_LEFT_RIGHT_OFF;
 }

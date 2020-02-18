@@ -96,7 +96,7 @@
 
 #define melodySoftLength 2
 //int melodySoft[melodySoftLength][2] = {NOTE_B5,8, NOTE_B5,8};
-int melodySoftTimed[melodySoftLength][3] = {NOTE_B5,0,125,NOTE_B5,163,288};
+word melodySoftTimed[melodySoftLength][3] = {NOTE_B5,0,125,NOTE_B5,163,288};
 
 //#define melodyFinishLength 8
 //int melodyFinish[melodyFinishLength][2] = {NOTE_C4,4, NOTE_G3,8, NOTE_G3,8, NOTE_A3,4, NOTE_G3,4, 0,4, NOTE_B3,4, NOTE_C4,4};

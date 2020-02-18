@@ -7,10 +7,13 @@
 
 //#define DEBUG
 
+// I2C parameters
+#define SLAVE_I2C_ADDRESS 9 // other addresses used are?
+
  // input assignments. All pull low when buttons are pressed
 #define INPUT_HORN_PIN  2
 #define INPUT_SOFT_HORN_PIN 5
-#define INPUT_BRAKE_PIN 12
+#define INPUT_BRAKE_PIN A1
 #define INPUT_ECO_PIN 4
 #define INPUT_IND_LEFT_PIN 0
 #define INPUT_IND_RIGHT_PIN 1
@@ -26,3 +29,7 @@
 #define ALARM_CYCLE_TIME 2800 // cycle time for upward pitch to downward pitch in ms
 #define ALARM_START_TONE 400 // starting frequency in Hz
 #define ALARM_END_TONE 1000 // end frequency in Hz
+
+// indicator flash timing
+#define INDICATOR_CYCLE_TIME 750 // cycle time in ms
+#define INDICATOR_CYCLE_TIME_ON 375 // on time of indicator
