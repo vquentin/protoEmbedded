@@ -22,6 +22,16 @@
 #define OUTPUT_IND_LEFT_PIN A3 // connected to npn transistor HIGH is ON
 #define OUTPUT_IND_RIGHT_PIN A2 // connected to npn transistor HIGH is ON
 
+// OLED screen pin assignments
+// Used for software SPI
+#define OLED_CLK 13
+#define OLED_MOSI 11
+// Used for software or hardware SPI
+#define OLED_CS 10
+#define OLED_DC 8
+// Used for I2C or SPI
+#define OLED_RESET 9
+
 // alarm tune for horn (police siren)
 #define ALARM_CYCLE_TIME 2800 // cycle time for upward pitch to downward pitch in ms
 #define ALARM_START_TONE 400 // starting frequency in Hz

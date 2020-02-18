@@ -11,6 +11,8 @@
 #include "musics.h" //file including the different melodies
 #include "utils.h" // file including utility functions
 #include "sharedI2CMsg.h" // declarations shared between two Arduinos, master and slave
+#include "enums.h" // declaration of additional enum types - placed here to avoid bugs
+#include "displayOLED.h" // functions to manage the OLED display dashboard
 
 #include <EEPROM.h> // to manage hard-coded variables like wheel diameter, odometer etc.
 #include <Wire.h> // to receive data from master on the I2C bus: speed, alarm state, trip distance, odometer distance
@@ -18,8 +20,6 @@
 EdgeDebounceLite debounce ;
 
 // brake state machine declarations
-enum state_brake_t {BRAKE_OFF, BRAKE_ON};
-enum buttons_brake_t {BRAKE_LEVER_ON,BRAKE_LEVER_OFF};
 void state_machine_brake();
 // actions
 void off_brakeLight();
@@ -28,8 +28,6 @@ void on_brakeLight();
 buttons_brake_t read_buttons_brake();
 
 // eco mode state machine declarations
-enum state_ecoMode_t {ECO_OFF, ECO_ON};
-enum buttons_ecoMode_t {ECO_MODE_ON, ECO_MODE_OFF};
 void state_machine_ecoMode();
 //actions
 void off_ecoMode();
@@ -38,8 +36,6 @@ void on_ecoMode();
 buttons_ecoMode_t read_buttons_ecoMode();
 
 // indicators state machine declarations
-enum state_ind_t {IND_OFF, L_IND_ON, R_IND_ON, L_R_IND_ON};
-enum buttons_ind_t {IND_LEFT_ON, IND_RIGHT_ON, IND_LEFT_RIGHT_OFF};
 unsigned long time_start_ind = 0 ;
 void state_machine_ind();
 //actions
@@ -51,8 +47,6 @@ void on_left_right_ind(unsigned long milliseconds_start, unsigned long milliseco
 buttons_ind_t read_buttons_ind();
 
 // horn state machine declarations
-enum state_horn_t {HORN_OFF, HORN_ON, HORN_SOFT, HORN_ALARM};
-enum buttons_horn_t {HORN_PUSH_MAIN, HORN_PUSH_SOFT, HORN_NO_PUSH};
 unsigned long time_start_soft_horn = 0 ;
 
 void state_machine_horn();
@@ -65,7 +59,7 @@ bool soft_horn(unsigned long milliseconds_start,unsigned long milliseconds_curre
 buttons_horn_t read_buttons_horn();
 
 // initialization of FSMs
-alarm_states_t state_alarm = ALARM_INACTIVE;
+alarm_states_t state_alarm = ALARM_WATCH;
 //alarm_states_t state_alarm = ALARM_ACTIVE; //uncomment this for testing the alarm function without implementation
 state_brake_t state_brake = BRAKE_OFF ; // brake FSM initialization
 state_ecoMode_t state_ecoMode = ECO_OFF ; // eco-mode FSM initialization
@@ -91,6 +85,15 @@ void setup() {
   // hard-coded variables in EEPROM
   // shunt resistor value
   // odometer/trip/speed/battery readings? assumes the arduino will not be on when riding?
+
+  // OLED display init
+  display.setRotation(2); // to accomodate our enclosure
+  display.begin(); // init of display
+  display.display(); // show splashscreen
+  delay(150);
+  display.clearDisplay();   // clears the screen and buffer
+  display.display();
+  
 }
 
 void loop() {
@@ -98,6 +101,7 @@ void loop() {
   state_machine_brake();
   state_machine_eco();
   state_machine_ind();
+  update_display(speedR,odoR,tripR,batteryChargeR,batteryKmR,state_alarm,state_ecoMode);
   delay(10);
 }
 
