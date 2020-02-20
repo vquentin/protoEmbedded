@@ -1,4 +1,4 @@
-update=Wednesday, February 19, 2020 at 04:29:51 PM
+update=Thursday, February 20, 2020 at 09:51:18 AM
 version=1
 last_client=kicad
 [general]
@@ -15,7 +15,7 @@ LibDir=
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=arduino_brain.net
+LastNetListRead=arduino_brain_updated.net
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0
