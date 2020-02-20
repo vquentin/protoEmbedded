@@ -6,6 +6,7 @@
  */
 
 //#define DEBUG
+#define SCREEN_ON
 
  // input assignments. All pull low when buttons are pressed
 #define INPUT_HORN_PIN  2

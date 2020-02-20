@@ -18721,7 +18721,7 @@
     )
   )
 
-  (module Connector_Pin:Pin_D0.9mm_L10.0mm_W2.4mm_FlatFork (layer B.Cu) (tedit 5A1DC084) (tstamp 5E505D81)
+  (module Connector_Pin:Pin_D0.9mm_L10.0mm_W2.4mm_FlatFork (layer B.Cu) (tedit 5A1DC084) (tstamp 5E4FDC73)
     (at 17.78 60.96)
     (descr "solder Pin_ with flat fork, hole diameter 0.9mm, length 10.0mm, width 2.4mm")
     (tags "solder Pin_ with flat fork")
@@ -20615,7 +20615,7 @@
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 5E5031D6)
-    (at 17.78 58.42)
+    (at 17.78 60.96)
     (descr "Through hole straight pin header, 1x10, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x10 2.54mm single row")
     (path /5E63AE84)

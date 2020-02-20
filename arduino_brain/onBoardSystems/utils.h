@@ -12,6 +12,7 @@
  #define DEBUG_PRINT(x)
 #endif*/
 
+
 /* This function plays the notes contained in pitch array, the array has two columns with tones and duration
  * Uses a passive buzzer connected to PIN_MUSIC pin
  * startTime is the value returned by millis() when the melody was started 

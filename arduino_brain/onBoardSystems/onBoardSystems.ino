@@ -12,7 +12,11 @@
 #include "utils.h" // file including utility functions
 #include "sharedI2CMsg.h" // declarations shared between two Arduinos, master and slave
 #include "enums.h" // declaration of additional enum types - placed here to avoid bugs
-#include "displayOLED.h" // functions to manage the OLED display dashboard
+
+#ifdef SCREEN_ON
+  #include "displayOLED.h" // functions to manage the OLED display dashboard
+#endif
+
 
 #include <EEPROM.h> // to manage hard-coded variables like wheel diameter, odometer etc.
 #include <Wire.h> // to receive data from master on the I2C bus: speed, alarm state, trip distance, odometer distance
@@ -86,7 +90,7 @@ void setup() {
   // hard-coded variables in EEPROM
   // shunt resistor value
   // odometer/trip/speed/battery readings? assumes the arduino will not be on when riding?
-
+#ifdef SCREEN_ON
   // OLED display init
   display.setRotation(2); // to accomodate our enclosure
   display.begin(); // init of display
@@ -94,7 +98,7 @@ void setup() {
   delay(150);
   display.clearDisplay();   // clears the screen and buffer
   display.display();
-  
+#endif
 }
 
 void loop() {
@@ -102,7 +106,9 @@ void loop() {
   state_machine_brake();
   state_machine_eco();
   state_machine_ind();
-  update_display(speedR,odoR,tripR,batteryChargeR,batteryKmR,state_alarm,state_ecoMode);
+  #ifdef SCREEN_ON
+    update_display(speedR,odoR,tripR,batteryChargeR,batteryKmR,state_alarm,state_ecoMode);
+  #endif
   delay(10);
 }
 
