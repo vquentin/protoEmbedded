@@ -206,8 +206,7 @@ Wire Wire Line
 Wire Wire Line
 	-2400 8050 -2250 8050
 Wire Wire Line
-	-2600 6650 -2350 6650
-Connection ~ -2350 6650
+	-2600 6650 -2500 6650
 Wire Wire Line
 	-2350 6650 -2250 6650
 Connection ~ -2350 7600
@@ -223,15 +222,7 @@ Wire Wire Line
 	-2250 8050 -2150 8050
 Wire Wire Line
 	-2350 6650 -2350 7600
-Connection ~ -1650 7200
-Wire Wire Line
-	-1650 7200 -1650 7300
-Wire Wire Line
-	-2250 6750 -2250 6850
-Connection ~ -2250 6850
-Wire Wire Line
-	-2250 6850 -2250 8050
-Text GLabel 1700 650  2    50   Input ~ 10
+Text GLabel -1650 2350 2    50   Input ~ 10
 MOTOR_CTRL_SWITCH_HI
 Text GLabel -950 6750 2    50   Input ~ 0
 9DoF_SDA
@@ -265,7 +256,7 @@ Text GLabel 1650 1850 2    50   Input ~ 0
 MOTOR_CTRL_BRAKES_HI
 Text GLabel 1350 3050 2    50   Input ~ 0
 CA_SPEED_GND
-Text GLabel 1700 800  2    50   Input ~ 0
+Text GLabel -1750 3350 2    50   Input ~ 0
 MOTOR_CTRL_SWITCH_LO
 $Comp
 L power:+12V #PWR0103
@@ -326,7 +317,7 @@ L Device:R_Small R9
 U 1 1 5E0B3D4A
 P 5850 4550
 F 0 "R9" V 5950 4550 50  0000 C CNN
-F 1 "CFR16-100R" V 5966 4550 50  0001 C CNN
+F 1 "CFR16-150R" V 5966 4550 50  0001 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical" V 5780 4550 50  0001 C CNN
 F 3 "~" H 5850 4550 50  0001 C CNN
 	1    5850 4550
@@ -1313,9 +1304,9 @@ Wire Wire Line
 Connection ~ 1500 5600
 Wire Wire Line
 	1500 5600 1700 5600
-Text GLabel 6550 7150 2    50   Output ~ 0
+Text GLabel 6550 7150 2    50   Input ~ 0
 A1_A4
-Text GLabel 6550 7250 2    50   Output ~ 0
+Text GLabel 6550 7250 2    50   Input ~ 0
 A1_A5
 Text GLabel -1100 6450 2    50   Output ~ 0
 A1_A4
@@ -1486,7 +1477,7 @@ Text Notes 4650 6400 2    50   ~ 0
 commodo horn
 Text Notes 4650 6600 2    50   ~ 0
 commodo eco
-Text Notes -2350 5650 2    50   ~ 0
+Text Notes -2550 5650 2    50   ~ 0
 speed
 Text GLabel 900  4000 0    50   Output ~ 0
 A1_D7
@@ -1963,8 +1954,8 @@ $Comp
 L Analog_Switch:CD4051B U3
 U 1 1 5E57C081
 P 1500 10000
-F 0 "U3" V 1546 10744 50  0000 L CNN
-F 1 "CD4050BE" V 1455 10744 50  0000 L CNN
+F 0 "U3" H 1550 10850 50  0000 L CNN
+F 1 "CD4050BE" H 1450 10750 50  0000 L CNN
 F 2 "Package_DIP:DIP-16_W7.62mm" H 1650 9250 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4052b.pdf" H 1480 10100 50  0001 C CNN
 	1    1500 10000
@@ -2100,8 +2091,6 @@ Wire Wire Line
 Connection ~ 5350 5450
 Wire Wire Line
 	5350 5450 5350 5750
-Wire Wire Line
-	5350 5450 5550 5450
 $Comp
 L Connector:Conn_01x06_Male J4
 U 1 1 5E5AAD46
@@ -2115,9 +2104,6 @@ F 3 "~" H 7500 6950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7700 6750 6550 6750
-Connection ~ 6550 6750
-Wire Wire Line
-	6550 6750 6500 6750
 Wire Wire Line
 	7700 6850 6550 6850
 Wire Wire Line
@@ -2251,9 +2237,9 @@ Wire Wire Line
 	4800 8200 6550 8200
 Wire Wire Line
 	6550 8200 6550 7550
-Text Notes -2750 5950 0    50   ~ 0
+Text Notes -2950 5950 0    50   ~ 0
 front beam
-Text Notes -3200 6050 0    50   ~ 0
+Text Notes -3400 6050 0    50   ~ 0
 license plate and light
 Text GLabel -2250 6050 0    50   Output ~ 0
 A2_D6
@@ -2298,10 +2284,6 @@ Wire Wire Line
 	1900 6850 1750 6850
 Wire Wire Line
 	5450 7850 5550 7850
-Connection ~ 4950 7550
-Connection ~ 5550 5450
-Wire Wire Line
-	5550 5450 7250 5450
 Connection ~ 5550 7850
 Wire Wire Line
 	5550 7850 7450 7850
@@ -2351,4 +2333,95 @@ Wire Wire Line
 Wire Wire Line
 	7650 9700 7450 9700
 Connection ~ 7450 9700
+Wire Wire Line
+	5350 5450 7250 5450
+$Comp
+L power:GND #PWR?
+U 1 1 5EC019BF
+P 5350 7900
+F 0 "#PWR?" H 5350 7650 50  0001 C CNN
+F 1 "GND" H 5355 7727 50  0000 C CNN
+F 2 "" H 5350 7900 50  0001 C CNN
+F 3 "" H 5350 7900 50  0001 C CNN
+	1    5350 7900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 7900 5350 7850
+Connection ~ 5350 7850
+Text Notes -3450 7000 0    50   ~ 0
+SIM808_D12 to be routed \nto another arduino Pin \nbecause it’s used to boot \nthe GSM
+Wire Wire Line
+	-2500 6650 -2500 6350
+Wire Wire Line
+	-2500 6350 -2250 6350
+NoConn ~ -2250 6450
+NoConn ~ 7200 5800
+NoConn ~ 5250 9500
+NoConn ~ 2800 11000
+NoConn ~ 2000 9500
+NoConn ~ 1400 9300
+NoConn ~ 1000 9800
+NoConn ~ 1000 10100
+$Comp
+L Relay:G6H-2 K?
+U 1 1 5E69EAFD
+P -1800 2850
+F 0 "K?" H -1170 2896 50  0000 L CNN
+F 1 "G6H-2" H -1170 2805 50  0000 L CNN
+F 2 "" H -1350 2750 50  0001 C CNN
+F 3 "http://cdn-reichelt.de/documents/datenblatt/C300/G6H%23OMR.pdf" H -1150 3000 50  0001 C CNN
+	1    -1800 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	-1800 3150 -1800 3350
+Wire Wire Line
+	-1800 3350 -1750 3350
+Wire Wire Line
+	-1700 2550 -1700 2350
+Wire Wire Line
+	-1700 2350 -1650 2350
+Wire Wire Line
+	-2250 6750 -2250 8050
+Connection ~ -2500 6650
+Wire Wire Line
+	-2400 6650 -2500 6650
+Text GLabel -1150 6250 2    50   Output ~ 0
+A2_A2
+Wire Wire Line
+	-1150 6250 -1250 6250
+Text GLabel -2350 2450 0    50   Output ~ 0
+A2_A2
+Wire Wire Line
+	-2350 2450 -2200 2450
+Wire Wire Line
+	-2200 2450 -2200 2550
+$Comp
+L power:GND #PWR?
+U 1 1 5E7F9B14
+P -2200 3150
+F 0 "#PWR?" H -2200 2900 50  0001 C CNN
+F 1 "GND" H -2195 2977 50  0000 C CNN
+F 2 "" H -2200 3150 50  0001 C CNN
+F 3 "" H -2200 3150 50  0001 C CNN
+	1    -2200 3150
+	1    0    0    -1  
+$EndComp
+NoConn ~ -1300 2550
+NoConn ~ -1500 2550
+NoConn ~ -1400 3150
+NoConn ~ -1900 2550
+Wire Wire Line
+	-1850 7150 -1850 7200
+Wire Wire Line
+	-1850 7200 -1750 7200
+Connection ~ -1650 7200
+Wire Wire Line
+	-1750 7150 -1750 7200
+Connection ~ -1750 7200
+Wire Wire Line
+	-1750 7200 -1650 7200
+Text Notes -800 6250 0    50   ~ 0
+start/stop relay
 $EndSCHEMATC
